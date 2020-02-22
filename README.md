@@ -1,1 +1,1 @@
-# Competitive-Programing-Notebook
+# Competitive-Programming-Notebook
