@@ -135,38 +135,38 @@ struct SplayTree{
 		}
 	}
 };
-class Wavelet{
+class WaveletTree{
 private:
-	int A, Z;
-	Wavelet *l = 0;
-	Wavelet *r = 0;
+	int lo, hi;
+	WaveletTree *l = 0;
+	WaveletTree *r = 0;
 	SplayTree b;
 public:	
-	Wavelet(int min_value, int max_value) {
-		A = min_value;
-		Z = max_value;
+	WaveletTree(int min_value, int max_value) {
+		lo = min_value;
+		hi = max_value;
 		b.insert(0, 0);
 	}
-	~Wavelet() {
+	~WaveletTree() {
 		delete l;
 		delete r;
 	}
 	//0-indexed
 	void insert(int idx, int x) {
-		if(A >= Z)
+		if(lo >= hi)
 			return;
-		int M = (A + Z - 1) / 2;    
-		if(x <= M) {
-			l = l ?: new Wavelet(A, M);
+		int mid = (lo + hi - 1) / 2;    
+		if(x <= mid) {
+			l = l ?: new WaveletTree(lo, mid);
 			l->insert(b.insert(idx, 1), x);
 		}else{
-			r = r ?: new Wavelet(M+1, Z);
+			r = r ?: new WaveletTree(mid+1, hi);
 			r->insert(idx - b.insert(idx, 0), x);
 		}
 	}
 	//0-indexed
 	void erase(int idx) {
-		if(A == Z)
+		if(lo == hi)
 			return;
 		auto p = b.get(idx);
 		int lf = p->l ? p->l->y : 0;
@@ -177,16 +177,39 @@ public:
 		else
 			r->erase(idx-lf);
 	}
-	//kth [l, r[
-	int kth(int L, int R, int k) {
-		if(A == Z)
-			return A;
-		int x = b.rank(L);
-		int y = b.rank(R);
+	//kth smallest element in range [i, j[
+	//0-indexed
+	int kth(int i, int j, int k) {
+    if(i >= j)
+      return 0;
+		if(lo == hi)
+			return lo;
+		int x = b.rank(i);
+		int y = b.rank(j);
 		if(k <= y-x)
 			return l->kth(x, y, k);
 		else
-			return r->kth(L-x, R-y, k-(y-x));
+			return r->kth(i-x, j-y, k-(y-x));
+	}
+	//Amount of numbers in the range [i, j[ Less than or equal to k
+  //0-indexed
+	int lte(int i, int j, int k) {
+		if(i >= j or k < lo) return 0;
+		if(hi <= k) return j - i;
+		int x = b.rank(i);
+		int y = b.rank(j);
+		return l->lte(x, y, k) + r->lte(i-x, j-y, k);
+	} 
+	//Amount of numbers in the range [i, j[ equal to k
+  //0-indexed
+	int count(int i, int j, int k) {
+		if(i >= j or k < lo or k > hi) return 0;
+		if(lo == hi) return j - i;
+    int mid = (lo + hi - 1)/2;
+		int x = b.rank(i);
+		int y = b.rank(j);
+		if(k <= mid) return l->count(x, y, k);
+		return r->count(i-x, j-y, k);
 	}
 	//0-indexed
 	int get(int idx){
