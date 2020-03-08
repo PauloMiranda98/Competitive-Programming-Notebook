@@ -27,6 +27,8 @@
 **Dynamic Programming**
 
 **Math**
+- [x] [Basic Math](code/math/basic_math.h)
+- [x] [Binomial Coefficients](code/math/binomial_coefficients.h)
 
 **Geometry**
 
@@ -35,3 +37,5 @@
 **Miscellaneous**
 
 **Theorems and Formulas**
+- [x] [Binomial Coefficients](code/theorems_and_formulas/binomial_coefficients.tex)
+- [x] [Catalan Number](code/theorems_and_formulas/catalan_number.tex)
