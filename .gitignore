@@ -1,2 +1,6 @@
 .vscode
+notebook.*
+test_latex/test_latex.*
+test_latex/test_pdf.pdf
 
+!test_latex/test_latex.tex
