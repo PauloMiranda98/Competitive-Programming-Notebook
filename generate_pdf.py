@@ -68,7 +68,10 @@ def get_tex(sections):
     tex += '\\section{%s}\n' % section_name
     for (filename, subsection_name) in subsections:
       tex += '\\subsection{%s}\n' % subsection_name
-      tex += '\\raggedbottom\\lstinputlisting[style=%s]{%s}\n' % (get_style(filename), filename)
+      if(get_style(filename) == 'tex'):
+        tex += '\\raggedbottom{\\input{%s}}\n' % filename
+      else:
+        tex += '\\raggedbottom\\lstinputlisting[style=%s]{%s}\n' % (get_style(filename), filename)
       tex += '\\hrulefill\n'
     tex += '\n'
   return tex
