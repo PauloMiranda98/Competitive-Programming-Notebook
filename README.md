@@ -19,11 +19,16 @@ sudo apt-get install latexmk
 python generate_pdf.py
 ```
 
-## Adicionar novos códigos
-- crie o arquivo do código na pasta `code/$categoria/` com o nome `nome_do_algoritmo.h`
-- crie o teste referente ao código na pasta `test/$categoria/` com o nome `nome_do_algoritmo_test.cpp`
-- Adiciona uma nova linha no arquivo `contests.md` em baixo de `**categoria**` com o seguinte formato: `- [x] [nome_no_pdf](code/$categoria/nome_do_algoritmo.h)`
+## Adicionar Novos Códigos
+- Crie o arquivo do código na pasta `code/$categoria/` com o nome `nome_do_algoritmo.h`
+- Crie o teste referente ao código na pasta `test/$categoria/` com o nome `nome_do_algoritmo_test.cpp`
+- Adicione uma nova linha no arquivo `contests.md` em baixo de `**categoria**` com o seguinte formato: `- [x] [nome_no_pdf](code/$categoria/nome_do_algoritmo.h)`
 - Por fim, é só rodar o gerador :)
 
-## Remover código do PDF
+## Adicionar Novos Teoremas e Fórmulas
+- Primeiro teste se o LaTeX está formatado da maneira correta. Para isso, coloque o conteúdo no arquivo `test_latex/test_content.tex` e tente gerar o PDF com o seguinte comando : `python generate_test_pdf.py`
+- Após isso, crie o arquivo na pasta `code/theorems_and_formulas/` com o nome `nome_do_assunto.tex`
+- Por fim, adicione uma nova linha no arquivo `contests.md` em baixo de `**Theorems and Formulas**` com o seguinte formato: `- [x] [nome_no_pdf](code/theorems_and_formulas/nome_do_assunto.tex)`
+
+## Remover Código do PDF
 - Para remover do PDF basta remover o x: `- [ ] [nome_no_pdf](code/$categoria/nome_do_algoritmo.h)`
