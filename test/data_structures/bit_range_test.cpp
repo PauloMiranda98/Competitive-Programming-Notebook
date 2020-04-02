@@ -16,10 +16,10 @@ void testAddAndGet(){
 	assert(bit.get(2) == 7);
 	assert(bit.get(3) == 10);
 	assert(bit.get(4) == 13);
-	assert(bit.get(5) == 13);	
+	assert(bit.get(5) == 13);
 }
 
-int main() {		
+int main(){
 	testAddAndGet();
 	return 0;
 }

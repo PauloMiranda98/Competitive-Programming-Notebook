@@ -11,7 +11,7 @@ void test1(){
   edges.emplace_back(3, 6);
   edges.emplace_back(6, 7);
   vector<int> comp = SCC::scc(8, edges);
-  for(pii p: edges)
+  for (pii p : edges)
     assert(comp[p.first] != comp[p.second]);
 }
 void test2(){
@@ -26,9 +26,9 @@ void test2(){
   vector<int> comp = SCC::scc(8, edges);
   vector<pii> equals = {pii(2, 3), pii(3, 4)};
   vector<pii> diff = {pii(0, 1), pii(1, 2), pii(0, 2), pii(3, 5), pii(3, 6), pii(5, 6)};
-  for(pii p: equals)
+  for (pii p : equals)
     assert(comp[p.first] == comp[p.second]);
-  for(pii p: diff)
+  for (pii p : diff)
     assert(comp[p.first] != comp[p.second]);
 }
 int main(){

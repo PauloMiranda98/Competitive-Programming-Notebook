@@ -7,9 +7,9 @@ void test1CRT(){
 void test2CRT(){
   vector<ll> m = {2, 3, 4, 6, 11};
   vector<ll> a(m.size());
-  for(int test=0; test<=100; test++){
-    for(int i=0; i<m.size(); i++)
-      a[i] = test%m[i];
+  for (int test = 0; test <= 100; test++){
+    for (int i = 0; i < m.size(); i++)
+      a[i] = test % m[i];
     ll ans = CRT::solve(a, m);
     assert(test == ans);
   }

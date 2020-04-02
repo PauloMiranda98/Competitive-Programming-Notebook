@@ -3,9 +3,9 @@ typedef pair<int, int> pii;
 //(A) = (0)
 //(B) = (1)
 //(C) = (2)
-const int A=0, B=1, C=2;
+const int A = 0, B = 1, C = 2;
 
-void test(){  
+void test(){
   //(A v B) ^ (~A v ~C) ^ (B v C)
   SAT sat(3);
   sat.addOr(A, B);

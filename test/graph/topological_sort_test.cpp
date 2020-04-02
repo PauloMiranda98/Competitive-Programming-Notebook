@@ -3,10 +3,10 @@ typedef pair<int, int> pii;
 bool testTopologicalSort(int n, vector<pii> edges){
   vector<int> ts = TopologicalSort::order(n, edges);
   vector<int> time(n);
-  for(int i=0; i<n; i++)
+  for (int i = 0; i < n; i++)
     time[ts[i]] = i;
-  for(pii p: edges){
-    if(time[p.first] > time[p.second])
+  for (pii p : edges){
+    if (time[p.first] > time[p.second])
       return false;
   }
   return true;

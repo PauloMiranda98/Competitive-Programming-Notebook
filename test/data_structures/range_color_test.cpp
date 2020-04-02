@@ -1,7 +1,7 @@
 #include "../../code/data_structures/range_color.h"
 
 void testRangeColor(){
-	RangeColor rc(1, 10, 1);
+  RangeColor rc(1, 10, 1);
   assert(rc.countColor(0) == 10 and rc.countColor(1) == 0);
   rc.set(2, 5, 1);
   assert(rc.countColor(0) == 6 and rc.countColor(1) == 4);
@@ -23,7 +23,7 @@ void testRangeColor(){
   assert(rc.countColor(0) == 10 and rc.countColor(1) == 0);
 }
 
-int main() {		
-	testRangeColor();
-	return 0;
+int main(){
+  testRangeColor();
+  return 0;
 }

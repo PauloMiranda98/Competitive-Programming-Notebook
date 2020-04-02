@@ -7,23 +7,23 @@ namespace TopologicalSort{
   vector<int> vAns;
   void dfs(int u){
     visited[u] = true;
-    for(int to : adj[u]){
-      if(!visited[to])
+    for (int to : adj[u]){
+      if (!visited[to])
         dfs(to);
     }
     vAns.push_back(u);
   }
   vector<int> order(int n, vector<pii> &edges){
     adj.assign(n, vector<int>());
-    for(pii p: edges)
+    for (pii p : edges)
       adj[p.first].push_back(p.second);
     visited.assign(n, false);
     vAns.clear();
-    for(int i = 0; i < n; i++){
-      if(!visited[i])
+    for (int i = 0; i < n; i++){
+      if (!visited[i])
         dfs(i);
     }
     reverse(vAns.begin(), vAns.end());
     return vAns;
   }
-};
+}; // namespace TopologicalSort

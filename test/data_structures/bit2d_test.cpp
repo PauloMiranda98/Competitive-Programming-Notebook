@@ -10,14 +10,14 @@ void testAddAndGet(){
 	assert(bit.get(2, 1) == 8);
 	assert(bit.get(1, 3) == 7);
 	assert(bit.get(3, 3) == 10);
-	
+
 	assert(bit.get(2, 2, 3, 3) == 0);
 	assert(bit.get(1, 1, 1, 1) == 5);
 	assert(bit.get(2, 1, 2, 1) == 3);
 	assert(bit.get(1, 3, 1, 3) == 2);
 }
 
-int main() {		
+int main(){
 	testAddAndGet();
-	return 0;	
+	return 0;
 }
