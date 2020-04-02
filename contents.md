@@ -24,6 +24,7 @@
 
 **Graph Algorithms**
 - [x] [2-SAT](code/graph/2_sat.h)
+- [x] [Dinic](code/graph/dinic.h)
 - [x] [Minimum Cost Maximum Flow](code/graph/minimum_cost_maximum_flow.h)
 - [x] [Strongly Connected Component](code/graph/strongly_connected_component.h)
 - [x] [Topological Sort](code/graph/topological_sort.h)
