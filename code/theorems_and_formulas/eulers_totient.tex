@@ -1,0 +1,11 @@
+If p is a prime number: $\phi (p) = p - 1$ and $\phi(p^k) = p^k - p^{k-1}$
+
+If a and b are relatively prime, then: $\phi(a b) = \phi(a) \cdot \phi(b)$
+
+In general: $\phi(ab) = \phi(a) \cdot \phi(b) \cdot \dfrac{gcd(a, b)}{\phi(gcd(a, b))}$
+
+This interesting property was established by Gauss: $\sum_{d|n} \phi{(d)} = n$, Here the sum is over all positive divisors d of n.
+
+Euler's theorem: $a^{\phi(m)} \equiv 1 \pmod m$, if a and m are relatively prime.
+
+Generalization: $a^{n}\equiv a^{\phi(m)+[n \bmod \phi(m)]} \mod m$, for arbitrary a, m and n $\ge log_2(m)$.
