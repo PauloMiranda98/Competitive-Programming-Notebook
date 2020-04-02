@@ -10,10 +10,10 @@
 - [x] [LiChao Tree](code/data_structures/lichao_tree.h)
 - [x] [Policy Based Tree](code/data_structures/policy_based_tree.h)
 - [x] [Queue Query](code/data_structures/queue_query.h)
+- [x] [Range Color](code/data_structures/range_color.h)
 - [x] [Segment Tree](code/data_structures/segment_tree.h)
 - [x] [Segment Tree Iterative](code/data_structures/segment_tree_iterative.h)
 - [x] [Segment Tree Lazy](code/data_structures/segment_tree_lazy.h)
-- [x] [Set and Clear](code/data_structures/set_and_clear.h)
 - [x] [Sparse Table](code/data_structures/sparse_table.h)
 - [x] [SQRT Decomposition](code/data_structures/sqrt_decomposition.h)
 - [x] [SQRT Tree](code/data_structures/sqrt_tree.h)
@@ -23,12 +23,22 @@
 - [x] [Wavelet Tree](code/data_structures/wavelet_tree.h)
 
 **Graph Algorithms**
+- [x] [2-SAT](code/graph/2_sat.h)
+- [x] [Minimum Cost Maximum Flow](code/graph/minimum_cost_maximum_flow.h)
+- [x] [Strongly Connected Component](code/graph/strongly_connected_component.h)
+- [x] [Topological Sort](code/graph/topological_sort.h)
 
 **Dynamic Programming**
+- [x] [Divide and Conquer Optimization](code/dynamic_programming/dc_optimization.tex)
+- [x] [Divide and Conquer Optimization Implementation](code/dynamic_programming/dc_optimization.h)
 
 **Math**
 - [x] [Basic Math](code/math/basic_math.h)
 - [x] [Binomial Coefficients](code/math/binomial_coefficients.h)
+- [x] [Chinese Remainder Theorem](code/math/chinese_remainder_theorem.h)
+- [x] [Euler's totient](code/math/eulers_totient.h)
+- [x] [Extended Euclidean](code/math/extended_euclidean.h)
+- [x] [Gray Code](code/math/gray_code.h)
 
 **Geometry**
 
@@ -39,3 +49,5 @@
 **Theorems and Formulas**
 - [x] [Binomial Coefficients](code/theorems_and_formulas/binomial_coefficients.tex)
 - [x] [Catalan Number](code/theorems_and_formulas/catalan_number.tex)
+- [x] [Euler's Totient](code/theorems_and_formulas/eulers_totient.tex)
+- [x] [Primes](code/theorems_and_formulas/primes.tex)
