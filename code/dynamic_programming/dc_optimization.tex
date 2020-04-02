@@ -1,0 +1,10 @@
+Reduces the complexity from $O(n^2k)$ to $O(nk\log n)$ of PD's in the following ways (and other variants):
+\begin{equation}
+  dp[n][k] = \max_{0 \leq i < n}(dp[i][k-1] + C[i+1][n]), \; base \; case: \; dp[0][j], dp[i][0]
+\end{equation}
+\begin{itemize}
+  \itemsep0em
+  \item $C[i][j] = $ the cost only depends on $i$ and $j$.
+  \item $opt[n][k] = i$ is the optimal value that maximizes $dp[n][k]$.
+\end{itemize}
+It is necessary that $opt$ is increasing along each column: $opt[j][k] \leq opt[j+1][k]$.
