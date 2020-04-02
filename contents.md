@@ -12,6 +12,7 @@
 - [x] [Queue Query](code/data_structures/queue_query.h)
 - [x] [Range Color](code/data_structures/range_color.h)
 - [x] [Segment Tree](code/data_structures/segment_tree.h)
+- [x] [Segment Tree 2D](code/data_structures/segment_tree_2d.h)
 - [x] [Segment Tree Iterative](code/data_structures/segment_tree_iterative.h)
 - [x] [Segment Tree Lazy](code/data_structures/segment_tree_lazy.h)
 - [x] [Sparse Table](code/data_structures/sparse_table.h)
