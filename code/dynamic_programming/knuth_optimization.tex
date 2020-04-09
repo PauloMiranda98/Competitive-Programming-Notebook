@@ -1,0 +1,23 @@
+Reduces the complexity from $O(n^3)$ to $O(n^2)$ of PD's in the following ways (and other variants):
+\begin{equation}
+  dp[i][j] = C[i][j] + \min_{i < k < j}(dp[i][k] + dp[k][j]), \; caso \; base: \; dp[i][i]
+\end{equation}
+\begin{equation}
+  dp[i][j] = \min_{i < k < j}(dp[i][k] + C[i][k]), \; caso \; base: \; dp[i][i]
+\end{equation}
+\begin{itemize}
+  \itemsep0em
+  \item $C[i][j] =$ the cost only depends on $i$ and $j$.
+  \item $opt[i][j] = k$ is the optimal value that maximizes $dp[i][j]$.
+\end{itemize}
+The following conditions must be met:
+\begin{itemize}
+  \itemsep0em
+  \item Foursquare inequality on $C$: $C[a][c] + C[b][d] \leq C[a][d] + C[b][c]$, $a \leq b \leq c \leq d$.
+  \item Monotonicity on $C$: $C[b][c] \leq C[a][d]$, $a \leq b \leq c \leq d$.
+\end{itemize}
+Or the following condition:
+\begin{itemize}
+  \itemsep0em
+  \item $opt$ increasing in rows and columns: $opt[i][j-1] \leq opt[i][j] \leq opt[i+1][j]$.
+\end{itemize}

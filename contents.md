@@ -33,6 +33,8 @@
 **Dynamic Programming**
 - [x] [Divide and Conquer Optimization](code/dynamic_programming/dc_optimization.tex)
 - [x] [Divide and Conquer Optimization Implementation](code/dynamic_programming/dc_optimization.h)
+- [x] [Knuth Optimization](code/dynamic_programming/knuth_optimization.tex)
+- [x] [Knuth Optimization Implementation](code/dynamic_programming/knuth_optimization.h)
 
 **Math**
 - [x] [Basic Math](code/math/basic_math.h)
