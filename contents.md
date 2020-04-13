@@ -43,6 +43,7 @@
 - [x] [Euler's totient](code/math/eulers_totient.h)
 - [x] [Extended Euclidean](code/math/extended_euclidean.h)
 - [x] [Gray Code](code/math/gray_code.h)
+- [x] [Prime Number](code/math/prime.h)
 
 **Geometry**
 
