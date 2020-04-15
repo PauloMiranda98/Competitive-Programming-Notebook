@@ -38,11 +38,13 @@
 
 **Math**
 - [x] [Basic Math](code/math/basic_math.h)
+- [x] [BigInt](code/math/bigint.h)
 - [x] [Binomial Coefficients](code/math/binomial_coefficients.h)
 - [x] [Chinese Remainder Theorem](code/math/chinese_remainder_theorem.h)
 - [x] [Euler's totient](code/math/eulers_totient.h)
 - [x] [Extended Euclidean](code/math/extended_euclidean.h)
 - [x] [Gray Code](code/math/gray_code.h)
+- [x] [Montgomery Multiplication](code/math/montgomery.h)
 - [x] [Prime Number](code/math/prime.h)
 
 **Geometry**
