@@ -25,9 +25,9 @@ void testGetPosition(){
 	assert(bit.get(4) == 5);
 	assert(bit.get(7) == 10);
 
-	assert(bit.position(2) == 1);
-	assert(bit.position(5) == 4);
-	assert(bit.position(10) == 7);
+	assert(bit.lower_bound(2) == 1);
+	assert(bit.lower_bound(5) == 4);
+	assert(bit.lower_bound(10) == 7);
 }
 
 int main(){

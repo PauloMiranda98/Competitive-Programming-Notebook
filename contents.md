@@ -26,6 +26,7 @@
 **Graph Algorithms**
 - [x] [2-SAT](code/graph/2_sat.h)
 - [x] [Dinic](code/graph/dinic.h)
+- [x] [Flow With Demand](code/graph/flow_with_demand.h)
 - [x] [Minimum Cost Maximum Flow](code/graph/minimum_cost_maximum_flow.h)
 - [x] [Strongly Connected Component](code/graph/strongly_connected_component.h)
 - [x] [Topological Sort](code/graph/topological_sort.h)
@@ -50,11 +51,15 @@
 **Geometry**
 
 **String Algorithms**
+- [x] [Min Cyclic String](code/strings/min_cyclic_string.h)
 
 **Miscellaneous**
+- [x] [Mo Algorithm](code/miscellaneous/mo_algorithm.h)
 
 **Theorems and Formulas**
 - [x] [Binomial Coefficients](code/theorems_and_formulas/binomial_coefficients.tex)
 - [x] [Catalan Number](code/theorems_and_formulas/catalan_number.tex)
 - [x] [Euler's Totient](code/theorems_and_formulas/eulers_totient.tex)
+- [x] [Formulas](code/theorems_and_formulas/formulas.tex)
+- [x] [Manhattan Distance](code/theorems_and_formulas/manhattan_distance.tex)
 - [x] [Primes](code/theorems_and_formulas/primes.tex)
