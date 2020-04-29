@@ -25,10 +25,11 @@ public:
 	}
 	//1-indexed
 	void add(int i, t_bit value){
+		assert(i > 0);
 		for (; i <= nBit; i += (i & -i))
 			bit[i] += value;
 	}
-	t_bit position(t_bit value){
+	t_bit lower_bound(t_bit value){
 		t_bit sum = 0;
 		int pos = 0;
 		for (int i = nLog; i >= 0; i--){
