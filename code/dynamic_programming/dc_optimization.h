@@ -9,7 +9,8 @@ void calculateDP(int l, int r, int k, int opt_l, int opt_r){
   if (l > r)
     return;
   int mid = (l + r) >> 1;
-  int ans = -INF, opt;
+  int ans = -INF, opt = mid;
+//  int ans = dp[mid][k-1], opt=mid; //If you accept empty subsegment
   for (int i = opt_l; i <= min(opt_r, mid - 1); i++){
     if (ans < dp[i][k - 1] + C(i + 1, mid)){
       opt = i;
