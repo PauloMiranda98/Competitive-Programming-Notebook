@@ -1,0 +1,17 @@
+Transformation of the manhattan distance to 2 dimensions between $P_1=(x_1, y_1)$ and $P_2=(x_2, y_2)$:
+
+$ |x_1 - x_2| + |y_1 - y_2| = max(|A_1-B_1|, |A_2-B_2|)$ where $A=(x_1+y_1, x_1-y_1)$ e $B=(x_2+y_2, x_2-y_2)$
+
+Transformation of the manhattan distance to 3 dimensions between $P_1=(x_1, y_1, z_1)$ and $P_2=(x_2, y_2, z_2)$:
+
+$ |x_1 - x_2| + |y_1 - y_2| + |z_1 - z_2| = max(|A_1-B_1|, |A_2-B_2|, |A_3-B_3|, |A_4-B_4|)$ where $A=(x_1+y_1+z_1, x_1+y_1-z_1, x_1-y_1+z_1, -x_1+y_1+z_1)$ e $B=(x_2+y_2+z_2, x_2+y_2-z_2, x_2-y_2+z_2, -x_2+y_2+z_2)$
+
+Transformation of the manhattan distance to D dimensions between $P_1$ and $P_2$:
+
+$isSet(i, x) = 1$ if the i-th bit is setted in $x$ and 0 otherwise.
+
+$A[i] = \sum_{j=0}^{d-1}(-1)^{isSet(j, i)}P_1[j]$
+
+$B[i] = \sum_{j=0}^{d-1}(-1)^{isSet(j, i)}P_2[j]$
+
+$$\sum_{i = 0}^{d-1} |P_1[i] - P_2[i]| = \max_{i=0}^{2^d - 1}{|A_i - B_i|}$$ 
