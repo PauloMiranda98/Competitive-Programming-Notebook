@@ -9,7 +9,7 @@ private:
     Edge(int a, T b, T c) : to(a), cap(b), cost(c) {}
   };
   int n;
-  vector<std::vector<int>> edges;
+  vector<vector<int>> edges;
   vector<Edge> list;
   vector<int> from;
   vector<T> dist, pot;
