@@ -1,14 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long ll;
-class Dinic{
-private:
+template <typename flow_t>
+struct Dinic{
   struct FlowEdge{
     int v, u;
-    ll cap, flow = 0;
-    FlowEdge(int v, int u, ll cap) : v(v), u(u), cap(cap) {}
+    flow_t cap, flow = 0;
+    FlowEdge(int v, int u, flow_t cap) : v(v), u(u), cap(cap) {}
   };
-  const ll flow_inf = 1e18;
+  const flow_t flow_inf = numeric_limits<flow_t>::max();
   vector<FlowEdge> edges;
   vector<vector<int>> adj;
   int n, m = 0;
@@ -30,7 +29,7 @@ private:
     }
     return level[t] != -1;
   }
-  ll dfs(int v, ll pushed){
+  flow_t dfs(int v, flow_t pushed){
     if (pushed == 0)
       return 0;
     if (v == t)
@@ -40,7 +39,7 @@ private:
       int u = edges[id].u;
       if (level[v] + 1 != level[u] || edges[id].cap - edges[id].flow < 1)
         continue;
-      ll tr = dfs(u, min(pushed, edges[id].cap - edges[id].flow));
+      flow_t tr = dfs(u, min(pushed, edges[id].cap - edges[id].flow));
       if (tr == 0)
         continue;
       edges[id].flow += tr;
@@ -49,61 +48,65 @@ private:
     }
     return 0;
   }
-public:
-  Dinic(int n) : n(n){
+  Dinic(){}
+  void init(int _n){
+    n = _n;  
     adj.resize(n);
     level.resize(n);
     ptr.resize(n);
   }
-  void addEdge(int v, int u, ll cap){
+  void addEdge(int v, int u, flow_t cap){
+    assert(n>0);
     edges.push_back(FlowEdge(v, u, cap));
     edges.push_back(FlowEdge(u, v, 0));
     adj[v].push_back(m);
     adj[u].push_back(m + 1);
     m += 2;
   }
-  ll maxFlow(int s1, int t1){
-    s = s1;
-    t = t1;
-    ll f = 0;
+  flow_t maxFlow(int s1, int t1){
+    s = s1, t = t1;
+    flow_t f = 0;
+    for(int i=0; i<m; i++)
+      edges[i].flow = 0;
     while (true){
-      fill(level.begin(), level.end(), -1);
+      level.assign(n, -1);
       level[s] = 0;
       q.push(s);
       if (!bfs())
         break;
-      fill(ptr.begin(), ptr.end(), 0);
-      while (ll pushed = dfs(s, flow_inf))
+      ptr.assign(n, 0);
+      while (flow_t pushed = dfs(s, flow_inf))
         f += pushed;
     }
     return f;
   }
-  typedef pair<int, int> pii;
-  vector<pii> recoverCut(){
-    fill(level.begin(), level.end(), 0);
-    vector<pii> rc;
-    q.push(s);
-    level[s] = 1;
-    while (!q.empty()){
-      int v = q.front();
-      q.pop();
-      for (int id : adj[v]){
-        if ((id & 1) == 1)
-          continue;
-        if (edges[id].cap == edges[id].flow){
-          rc.push_back(pii(edges[id].v, edges[id].u));
-        }else{
-          if (level[edges[id].u] == 0){
-            q.push(edges[id].u);
-            level[edges[id].u] = 1;
-          }
+};
+typedef pair<int, int> pii;
+vector<pii> recoverCut(Dinic<int> &d){
+  vector<int> level(d.n, 0);
+  vector<pii> rc;
+  queue<int> q;
+  q.push(d.s);
+  level[d.s] = 1;
+  while (!q.empty()){
+    int v = q.front();
+    q.pop();
+    for (int id : d.adj[v]){
+      if ((id & 1) == 1)
+        continue;
+      if (d.edges[id].cap == d.edges[id].flow){
+        rc.push_back(pii(d.edges[id].v, d.edges[id].u));
+      }else{
+        if (level[d.edges[id].u] == 0){
+          q.push(d.edges[id].u);
+          level[d.edges[id].u] = 1;
         }
       }
     }
-    vector<pii> ans;
-    for (pii p : rc)
-      if ((level[p.first] == 0) or (level[p.second] == 0))
-        ans.push_back(p);
-    return ans;
   }
-};
+  vector<pii> ans;
+  for (pii p : rc)
+    if ((level[p.first] == 0) or (level[p.second] == 0))
+      ans.push_back(p);
+  return ans;
+}
