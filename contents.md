@@ -52,6 +52,7 @@
 
 **String Algorithms**
 - [x] [Min Cyclic String](code/strings/min_cyclic_string.h)
+- [x] [Suffix Automaton](code/strings/suffix_automaton.h)
 
 **Miscellaneous**
 - [x] [Mo Algorithm](code/miscellaneous/mo_algorithm.h)
