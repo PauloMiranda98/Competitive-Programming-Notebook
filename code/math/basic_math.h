@@ -15,17 +15,6 @@ ull fastPow(ull base, ull exp, ull mod){
   }
   return ans;
 }
-ll extGcd(ll a, ll b, ll &x, ll &y){
-  if (b == 0){
-    x = 1;
-    y = 0;
-    return a;
-  }else{
-    ll g = extGcd(b, a % b, y, x);
-    y -= (a / b) * x;
-    return g;
-  }
-}
 ll gcd(ll a, ll b){ return __gcd(a, b); }
 ll lcm(ll a, ll b){ return (a / gcd(a, b)) * b; }
 void enumeratingAllSubmasks(int mask){
