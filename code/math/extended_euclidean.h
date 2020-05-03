@@ -11,11 +11,6 @@ ll extGcd(ll a, ll b, ll &x, ll &y){
 		return g;
 	}
 }
-ll inv(ll a, ll mod){
-	ll inv_x, y;
-	extGcd(a, mod, inv_x, y);
-	return (inv_x%mod + mod)%mod;		
-}
 //a*x + b*y = g
 //a*(x-(b/g)*k) + b*(y+(a/g)*k) = g
 bool dioEq(ll a, ll b, ll c, ll &x0, ll &y0, ll &g){
