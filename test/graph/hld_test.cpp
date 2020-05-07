@@ -2,7 +2,8 @@
 
 void testVertice(){
   int n = 6;
-  HLD hld(n);
+  HLD hld;
+  hld.init(n);
   hld.addEdge(0, 1);
   hld.addEdge(0, 2);
   hld.addEdge(2, 5);
@@ -40,7 +41,8 @@ void testVertice(){
 
 void testEdge(){
   int n = 6;
-  HLD hld(n);
+  HLD hld;
+  hld.init(n);
   hld.addEdge(0, 1, 1);
   hld.addEdge(0, 2, 2);
   hld.addEdge(2, 5, 5);
