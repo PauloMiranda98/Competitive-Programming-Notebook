@@ -25,6 +25,7 @@
 
 **Graph Algorithms**
 - [x] [2-SAT](code/graph/2_sat.h)
+- [x] [Centroid Decomposition](code/graph/centroid_decomposition.h)
 - [x] [Dinic](code/graph/dinic.h)
 - [x] [Flow With Demand](code/graph/flow_with_demand.h)
 - [x] [HLD](code/graph/hld.h)
@@ -58,6 +59,7 @@
 - [x] [Suffix Automaton](code/strings/suffix_automaton.h)
 
 **Miscellaneous**
+- [x] [Longest Increasing Subsequence](code/miscellaneous/lis.h)
 - [x] [Mo Algorithm](code/miscellaneous/mo_algorithm.h)
 
 **Theorems and Formulas**
