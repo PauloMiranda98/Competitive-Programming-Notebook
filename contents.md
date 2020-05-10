@@ -28,6 +28,7 @@
 - [x] [Centroid Decomposition](code/graph/centroid_decomposition.h)
 - [x] [Dinic](code/graph/dinic.h)
 - [x] [Flow With Demand](code/graph/flow_with_demand.h)
+- [x] [Kruskal](code/graph/kruskal.h)
 - [x] [HLD](code/graph/hld.h)
 - [x] [Minimum Cost Maximum Flow](code/graph/minimum_cost_maximum_flow.h)
 - [x] [Strongly Connected Component](code/graph/strongly_connected_component.h)
