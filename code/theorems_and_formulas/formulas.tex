@@ -2,10 +2,16 @@ Count the number of ways to partition a set of $n$ labelled objects into $k$ non
 
 $$f(n, k) = \sum_{i=0}^{k}(-1)^i\binom{k}{i}(k-i)^n$$
 
-Stirling Number 2nd: Partitions of an $n$ element set into $k$ not-empty set. Or count the number of ways to partition a set of $n$ labelled objects into $k$ nonempty unlabelled subsets.
+Stirling Number 2nd: Partitions of an $n$ element set into $k$ not-empty set. 
+Or count the number of ways to partition a set of $n$ labelled objects into $k$ nonempty unlabelled subsets.
 
 $$S_{2nd}(n, k) = \begin{Bmatrix} n \\ k \end{Bmatrix} = \frac{1}{k!}\sum_{i=0}^{k}(-1)^i\binom{k}{i}(k-i)^n$$
 
 Euler's formula: $f = e - v + 2$
 
 Number of regions in a planar graph: $R = E - V + C + 1$ where C is the number of connected components
+
+Given $a$ and $b$ co-prime, $n = a \cdot x + b \cdot y$ where $x \ge 0$ and $y \ge 0$. 
+You are required to find the least value of n, such that all currency values greater than or equal to $n$ can be made using any number of coins of denomination $a$ and $b$: $n = (a-1)*(b-1)$
+
+generalization of the above problem, $n$ is multiple of $gcd(a, b)$: $n = lcm(a, b) - a - b + gcd(a, b)$
