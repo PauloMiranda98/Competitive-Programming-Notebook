@@ -28,6 +28,13 @@ inline void shift_solution(ll &x, ll &y, ll a, ll b, ll cnt){
 }
 ll findAllSolutions(ll a, ll b, ll c, ll minx, ll maxx, ll miny, ll maxy){
 	ll x, y, g;
+	if(a==0 or b==0){
+		if(a==0 and b==0)
+			return (c==0)*(maxx-minx+1)*(maxy-miny+1);
+		if(a == 0)
+			return (c%b == 0)*(maxx-minx+1)*(miny<=c/b and c/b<=maxy);
+		return (c%a == 0)*(minx<=c/a and c/a<=maxx)*(maxy-miny+1);
+	}
 	if (!dioEq(a, b, c, x, y, g))
 		return 0;
 	a /= g;
