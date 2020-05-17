@@ -54,6 +54,8 @@
 - [x] [Prime Number](code/math/prime.h)
 
 **Geometry**
+- [x] [Basic Geometry](code/geometry/basic_geometry.h)
+- [x] [Point 3D](code/geometry/point3d.h)
 
 **String Algorithms**
 - [x] [Min Cyclic String](code/strings/min_cyclic_string.h)
