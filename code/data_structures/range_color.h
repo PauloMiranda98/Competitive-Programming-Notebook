@@ -22,6 +22,11 @@ public:
 		ans[0] = last - first + 1LL;
 		st.insert(Node(first, last, 0));
 	}
+	//get color in position x
+	int get(ll x){
+		auto p = st.upper_bound(Node(0, x - 1LL, -1));
+		return p->color;
+	}
 	//set newColor in [a, b]
 	void set(ll a, ll b, int newColor){
 		auto p = st.upper_bound(Node(0, a - 1LL, -1));
@@ -46,8 +51,8 @@ public:
 			ans[oldColor] -= (r - l + 1LL);
 			if (b < r){
 				ans[oldColor] += (r - b);
-				st.insert(Node(b + 1LL, r, oldColor));
 				st.erase(p);
+				st.insert(Node(b + 1LL, r, oldColor));
 				break;
 			}else{
 				p = st.erase(p);
