@@ -14,7 +14,7 @@ private:
 	inline void upLazy(int &node, int &i, int &j){
 		if (lazy[node] != 0){
 			st[node] += lazy[node] * (j - i + 1);
-			//tree[node] += lazy[node];
+			//st[node] += lazy[node];
 			if (i != j){
 				lazy[(node << 1)] += lazy[node];
 				lazy[(node << 1) + 1] += lazy[node];
