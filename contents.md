@@ -55,6 +55,7 @@
 
 **Geometry**
 - [x] [Basic Geometry](code/geometry/basic_geometry.h)
+- [x] [Circle Area Union](code/geometry/circle_area_union.h)
 - [x] [Point 3D](code/geometry/point3d.h)
 
 **String Algorithms**
