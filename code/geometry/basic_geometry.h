@@ -4,7 +4,7 @@ using namespace std;
 #ifdef POINT_DOUBLE
   typedef double ftype;
   typedef long double ftLong;
-  const long double EPS = 1e-9;
+  const double EPS = 1e-9;
   #define eq(a, b) (abs(a - b) < EPS)
   #define lt(a, b) ((a + EPS) < b)
   #define gt(a, b) (a > (b + EPS))
@@ -340,8 +340,7 @@ bool checkIfTheSegmentIsCompletelyCoveredByCircles(vector<Circle> &vc, Segment s
   return ans;
 }
 
-void tangents(Point2d c, double r1, double r2, vector<Line> &ans)
-{
+void tangents(Point2d c, double r1, double r2, vector<Line> &ans){
   double r = r2 - r1;
   double z = pw2(c.x) + pw2(c.y);
   double d = z - pw2(r);
@@ -354,14 +353,12 @@ void tangents(Point2d c, double r1, double r2, vector<Line> &ans)
   l.c = r1;
   ans.push_back(l);
 }
-vector<Line> tangents(Circle a, Circle b)
-{
+vector<Line> tangents(Circle a, Circle b){
   vector<Line> ans;
   for (int i = -1; i <= 1; i += 2)
     for (int j = -1; j <= 1; j += 2)
       tangents(Point2d(b.x - a.x, b.y - a.y), a.r * i, b.r * j, ans);
-  for (size_t i = 0; i < ans.size(); ++i)
-  {
+  for (size_t i = 0; i < ans.size(); ++i){
     ans[i].c -= ans[i].a * a.x + ans[i].b * a.y;
     ans[i].normalize();
   }
