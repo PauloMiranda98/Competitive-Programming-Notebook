@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define POINT_DOUBLE
+//#define POINT_DOUBLE
 #ifdef POINT_DOUBLE
   typedef double ftype;
   typedef long double ftLong;
@@ -46,36 +46,73 @@ struct Point2d{
 ftLong pw2(ftype a){
   return a * (ftLong)a;
 }
+//Scalar product
 ftLong dot(Point2d a, Point2d b){
-  return pw2(a.x) + pw2(a.y);
+  return a.x*(ftLong)b.x + a.y*(ftLong)b.y;
 }
 ftLong norm(Point2d a){
   return dot(a, a);
 }
 double len(Point2d a){
-  return sqrt(dot(a, a));
+  return sqrtl(dot(a, a));
 }
 double dist(Point2d a, Point2d b){
   return len(a - b);
 }
+//Vector product
+ftLong cross(Point2d a, Point2d b){
+  return a.x * (ftLong)b.y - a.y * (ftLong)b.x;
+}
+//Projection size from A to B
 double proj(Point2d a, Point2d b){
   return dot(a, b) / len(b);
 }
+//The angle between A and B
 double angle(Point2d a, Point2d b){
   return acos(dot(a, b) / len(a) / len(b));
 }
+//Left rotation. Angle in radian
 Point2d rotateL(Point2d p, double ang){
   return Point2d(p.x * cos(ang) - p.y * sin(ang), p.x * sin(ang) + p.y * cos(ang));
 }
+//90 degree left rotation
 Point2d perpL(Point2d a){
   return Point2d(-a.y, a.x);
 }
-// Project point c in line a->b
-Point2d projectPointInLine(Point2d a, Point2d b, Point2d c){
-  return a + (b - a) * (dot(b - a, c - a) / dot(b - a, b - a));
+//0-> 1o,2o quadrant, 1-> 3o,4o
+int half(Point2d &p){
+	if (gt(p.y, 0) or (eq(p.y, 0) and ge(p.x, 0)))
+		return 0;
+	else
+		return 1;
 }
-ftLong cross(Point2d a, Point2d b){
-  return a.x * (ftLong)b.y - a.y * (ftLong)b.x;
+//angle(a) < angle(b)
+bool cmpByAngle(Point2d a, Point2d b){
+	int ha = half(a), hb = half(b);
+	if (ha != hb)
+		return ha < hb;
+	else
+		return gt(cross(a, b), 0);
+}
+inline int sgn(ftLong x){
+  return ge(x, 0) ? (eq(x, 0) ? 0 : 1) : -1;
+}
+//-1: angle(a, b) < angle(b, c)
+// 0: angle(a, b) = angle(b, c)
+//+1: angle(a, b) > angle(b, c)
+int cmpAngleBetweenVectors(Point2d a, Point2d b, Point2d c){
+	ftLong dotAB = dot(a, b), dotBC = dot(b, c);
+	int sgnAB = sgn(dotAB), sgnBC = sgn(dotBC);
+	if(sgnAB == sgnBC){
+		ftLong l = pw2(dotAB)*dot(c, c), r = pw2(dotBC)*dot(a, a);
+		if(l == r)
+			return 0;
+		if(sgnAB == 1)
+			return (l > r)? -1 : +1;
+		return (l < r)? -1 : +1;
+	}else{
+		return (sgnAB > sgnBC)? -1 : +1;
+	}		
 }
 //Line parameterized: r1 = a1 + d1*t
 //This function can be generalized to 3D
@@ -163,6 +200,7 @@ bool equivalent(Line m, Line n){
          eq(det(m.a, m.c, n.a, n.c), 0) &&
          eq(det(m.b, m.c, n.b, n.c), 0);
 }
+//Distance from a point(x, y) to a line m
 double dist(Line m, ftype x, ftype y){
   return abs(m.a * (ftLong)x + m.b * (ftLong)y + m.c) /
          sqrt(m.a * (ftLong)m.a + m.b * (ftLong)m.b);
@@ -175,9 +213,6 @@ struct Segment{
   Segment() {}
   Segment(Point2d a, Point2d b) : a(a), b(b) {}
 };
-inline int sgn(ftLong x){
-  return ge(x, 0) ? (eq(x, 0) ? 0 : 1) : -1;
-}
 bool inter1d(ftype a, ftype b, ftype c, ftype d){
   if (a > b)
     swap(a, b);
