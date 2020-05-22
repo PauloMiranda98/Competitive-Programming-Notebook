@@ -43,6 +43,9 @@ ftLong dot(Point3d a, Point3d b){
 double len(Point3d a){
   return sqrt(dot(a, a));
 }
+double dist(Point3d a, Point3d b){
+  return len(a-b);
+}
 double proj(Point3d a, Point3d b){
   return dot(a, b) / len(b);
 }
@@ -65,4 +68,34 @@ Point3d planeIntersect(Point3d a1, Point3d n1, Point3d a2, Point3d n2, Point3d a
   return Point3d(triple(d, y, z),
                  triple(x, d, z),
                  triple(x, y, d)) / triple(n1, n2, n3);
+}
+struct Sphere{
+	ftype x, y, z, r;
+	Sphere(){} 
+	Sphere(ftype x, ftype y, ftype z,  ftype r):x(x), y(y), z(z), r(r){}
+};
+//Minimum enclosing Sphere, O(n*70000)
+//It is also possible to do with ternary search in the 3 dimensions
+Sphere minimumSphere(vector<Point3d> vp){
+	Point3d ans(0, 0, 0);
+	int n = vp.size();
+	for(Point3d p: vp)
+		ans = ans + p;		
+	ans = ans/n;
+	double P = 0.1;
+	double d = 0, e = 0;
+	for(int i = 0; i < 70000; i++){
+		int f = 0;
+		d = dist(ans, vp[0]);
+		for (int j = 1; j < n; j++) {
+			e = dist(ans, vp[j]);
+			if (d < e) {
+				d = e;
+				f = j;
+			}
+		}
+		ans = ans + (vp[f]-ans)*P;
+		P *= 0.998;
+	}
+	return Sphere(ans.x, ans.y, ans.z, d);
 }
