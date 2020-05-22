@@ -3,9 +3,9 @@ using namespace std;
 template <typename flow_t>
 struct Dinic{
   struct FlowEdge{
-    int v, u;
+    int from, to;
     flow_t cap, flow = 0;
-    FlowEdge(int v, int u, flow_t cap) : v(v), u(u), cap(cap) {}
+    FlowEdge(int from, int to, flow_t cap) : from(from), to(to), cap(cap) {}
   };
   const flow_t flow_inf = numeric_limits<flow_t>::max();
   vector<FlowEdge> edges;
@@ -16,30 +16,30 @@ struct Dinic{
   queue<int> q;
   bool bfs(){
     while (!q.empty()){
-      int v = q.front();
+      int u = q.front();
       q.pop();
-      for (int id : adj[v]){
+      for (int id : adj[u]){
         if (edges[id].cap - edges[id].flow < 1)
           continue;
-        if (level[edges[id].u] != -1)
+        if (level[edges[id].to] != -1)
           continue;
-        level[edges[id].u] = level[v] + 1;
-        q.push(edges[id].u);
+        level[edges[id].to] = level[u] + 1;
+        q.push(edges[id].to);
       }
     }
     return level[t] != -1;
   }
-  flow_t dfs(int v, flow_t pushed){
+  flow_t dfs(int u, flow_t pushed){
     if (pushed == 0)
       return 0;
-    if (v == t)
+    if (u == t)
       return pushed;
-    for (int &cid = ptr[v]; cid < (int)adj[v].size(); cid++){
-      int id = adj[v][cid];
-      int u = edges[id].u;
-      if (level[v] + 1 != level[u] || edges[id].cap - edges[id].flow < 1)
+    for (int &cid = ptr[u]; cid < (int)adj[u].size(); cid++){
+      int id = adj[u][cid];
+      int to = edges[id].to;
+      if (level[u] + 1 != level[to] || edges[id].cap - edges[id].flow < 1)
         continue;
-      flow_t tr = dfs(u, min(pushed, edges[id].cap - edges[id].flow));
+      flow_t tr = dfs(to, min(pushed, edges[id].cap - edges[id].flow));
       if (tr == 0)
         continue;
       edges[id].flow += tr;
@@ -55,12 +55,12 @@ struct Dinic{
     level.resize(n);
     ptr.resize(n);
   }
-  void addEdge(int v, int u, flow_t cap){
+  void addEdge(int from, int to, flow_t cap){
     assert(n>0);
-    edges.push_back(FlowEdge(v, u, cap));
-    edges.push_back(FlowEdge(u, v, 0));
-    adj[v].push_back(m);
-    adj[u].push_back(m + 1);
+    edges.push_back(FlowEdge(from, to, cap));
+    edges.push_back(FlowEdge(to, from, 0));
+    adj[from].push_back(m);
+    adj[to].push_back(m + 1);
     m += 2;
   }
   flow_t maxFlow(int s1, int t1){
@@ -89,17 +89,17 @@ vector<pii> recoverCut(Dinic<int> &d){
   q.push(d.s);
   level[d.s] = 1;
   while (!q.empty()){
-    int v = q.front();
+    int u = q.front();
     q.pop();
-    for (int id : d.adj[v]){
+    for (int id : d.adj[u]){
       if ((id & 1) == 1)
         continue;
       if (d.edges[id].cap == d.edges[id].flow){
-        rc.push_back(pii(d.edges[id].v, d.edges[id].u));
+        rc.push_back(pii(d.edges[id].from, d.edges[id].to));
       }else{
-        if (level[d.edges[id].u] == 0){
-          q.push(d.edges[id].u);
-          level[d.edges[id].u] = 1;
+        if (level[d.edges[id].to] == 0){
+          q.push(d.edges[id].to);
+          level[d.edges[id].to] = 1;
         }
       }
     }
