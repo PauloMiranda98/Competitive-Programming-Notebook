@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-//#define POINT_DOUBLE
+#define POINT_DOUBLE
 #ifdef POINT_DOUBLE
   typedef double ftype;
   typedef long double ftLong;
