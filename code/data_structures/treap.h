@@ -21,7 +21,8 @@ namespace Treap{
     // code here, no recursion
   }
   void split(int u, treap_t x, int &l, int &r) { // l gets <= x, r gets > x
-    unlaze(u); if(!u) return (void) (l = r = 0);
+    unlaze(u); 
+    if(!u) return (void) (l = r = 0);
     if(X[u] <= x) { split(R[u], x, l, r); R[u] = l; l = u; }
     else { split(L[u], x, l, r); L[u] = r; r = u; }
     calc(u);
@@ -42,7 +43,8 @@ namespace Treap{
   }
   int nth(int u, int idx){
     if(!u)
-    return 0;
+      return 0;
+    unlaze(u);
     if(idx <= sz[L[u]])
       return nth(L[u], idx);
     else if(idx == sz[L[u]] + 1)
@@ -80,8 +82,9 @@ namespace Treap{
     return ans;
   }
   int size(){ return sz[root];}
-  treap_t nth(int idx){ //1-indexed
-    int u = nth(root, idx);
+  //0-indexed
+  treap_t nth(int idx){ 
+    int u = nth(root, idx + 1);
     return X[u];
   }	
 }; 
