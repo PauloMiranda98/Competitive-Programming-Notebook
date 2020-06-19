@@ -47,7 +47,7 @@ void testTreap(){
       if (st.size() == 0)
         continue;
       int x = rand() % st.size();
-      assert((*st.find_by_order(x)) == Treap::nth(x + 1));
+      assert((*st.find_by_order(x)) == Treap::nth(x));
     }
     assert((int)st.size() == Treap::size());
   }
