@@ -8,7 +8,6 @@ namespace Treap{
 
   const treap_t neutral = 0;
   treap_t op_val[N];
-  treap_t lazy[N];
   inline treap_t join(treap_t a, treap_t b, treap_t c){
     return a + b + c;
   }
@@ -20,14 +19,6 @@ namespace Treap{
   void unlaze(int u) {
     if(!u) return;
     // code here, no recursion
-    if (lazy[u]){
-      X[u] += lazy[u];
-      if(L[u])
-        lazy[L[u]] += lazy[u];
-      if(R[u])
-        lazy[R[u]] += lazy[u];			
-      lazy[u] = 0;
-    }
   }
   void split(int u, treap_t x, int &l, int &r) { // l gets <= x, r gets > x
     unlaze(u); if(!u) return (void) (l = r = 0);
@@ -47,7 +38,6 @@ namespace Treap{
   int new_node(treap_t x){
     X[en] = x;
     op_val[en] = x;
-    lazy[en] = 0;
     return en++;
   }
   int nth(int u, int idx){
