@@ -47,6 +47,7 @@
 - [x] [Chinese Remainder Theorem](code/math/chinese_remainder_theorem.h)
 - [x] [Euler's totient](code/math/eulers_totient.h)
 - [x] [Extended Euclidean](code/math/extended_euclidean.h)
+- [x] [Fraction](code/math/fraction.h)
 - [x] [Gray Code](code/math/gray_code.h)
 - [x] [Matrix](code/math/matrix.h)
 - [x] [Modular Arithmetic](code/math/modular.h)
@@ -56,6 +57,7 @@
 **Geometry**
 - [x] [Basic Geometry](code/geometry/basic_geometry.h)
 - [x] [Circle Area Union](code/geometry/circle_area_union.h)
+- [x] [Count Lattices](code/geometry/count_lattices.h)
 - [x] [Point 3D](code/geometry/point3d.h)
 
 **String Algorithms**
