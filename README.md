@@ -11,12 +11,13 @@ Ferramentas necessárias: [Python 2/3](https://www.python.org/) e [latexmk](http
 ## Instalação
 ```script
 sudo apt-get install python
+sudo apt install texlive-latex-extra
 sudo apt-get install latexmk
 ```
 
 ## Execução
 ```script
-python generate_pdf.py
+python3 generate_pdf.py
 ```
 
 ## Adicionar Novos Códigos
