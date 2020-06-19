@@ -1,142 +1,113 @@
 #include <bits/stdc++.h>
 using namespace std;
-class ImplicitTreap{
-private:
-	typedef int t_treap;
-	const t_treap neutral = 0;
-	inline t_treap join(t_treap a, t_treap b, t_treap c){
-		return a + b + c;
-	}
-	struct Node{
-		int y, size;
-		t_treap v, op_value;
-		bool rev;
-		Node *l, *r;
-		Node(t_treap _v){
-			v = op_value = _v;
-			y = rand();
-			size = 1;
-			l = r = NULL;
-			rev = false;
-		}
-	};
-	Node *root;
-	int size(Node *t) { return t ? t->size : 0; }
-	t_treap op_value(Node *t) { return t ? t->op_value : neutral; }
-	Node *refresh(Node *t){
-		if (t == NULL)
-			return t;
-		t->size = 1 + size(t->l) + size(t->r);
-		t->op_value = join(t->v, op_value(t->l), op_value(t->r));
-		if (t->l != NULL)
-			t->l->rev ^= t->rev;
-		if (t->r != NULL)
-			t->r->rev ^= t->rev;
-		if (t->rev){
-			swap(t->l, t->r);
-			t->rev = false;
-		}
-		return t;
-	}
-	void split(Node *&t, int k, Node *&a, Node *&b){
-		refresh(t);
-		Node *aux;
-		if (!t){
-			a = b = NULL;
-		}else if (size(t->l) < k){
-			split(t->r, k - size(t->l) - 1, aux, b);
-			t->r = aux;
-			a = refresh(t);
-		}else{
-			split(t->l, k, a, aux);
-			t->l = aux;
-			b = refresh(t);
-		}
-	}
-	Node *merge(Node *a, Node *b){
-		refresh(a);
-		refresh(b);
-		if (!a || !b)
-			return a ? a : b;
-		if (a->y < b->y){
-			a->r = merge(a->r, b);
-			return refresh(a);
-		}else{
-			b->l = merge(a, b->l);
-			return refresh(b);
-		}
-	}
-	Node *at(Node *t, int n){
-		if (!t)
-			return t;
-		refresh(t);
-		if (n < size(t->l))
-			return at(t->l, n);
-		else if (n == size(t->l))
-			return t;
-		else
-			return at(t->r, n - size(t->l) - 1);
-	}
-	void del(Node *&t){
-		if (!t)
-			return;
-		if (t->l)
-			del(t->l);
-		if (t->r)
-			del(t->r);
-		delete t;
-		t = NULL;
-	}
-public:
-	ImplicitTreap() : root(NULL){
-		srand(time(NULL));
-	}
-	~ImplicitTreap() { clear(); }
-	void clear() { del(root); }
-	int size() { return size(root); }
-	//0-indexed
-	bool insert(int n, int v){
-		Node *a, *b;
-		split(root, n, a, b);
-		root = merge(merge(a, new Node(v)), b);
-		return true;
-	}
-	//0-indexed
-	bool erase(int n){
-		Node *a, *b, *c, *d;
-		split(root, n, a, b);
-		split(b, 1, c, d);
-		root = merge(a, d);
-		if (c == NULL)
-			return false;
-		delete c;
-		return true;
-	}
-	//0-indexed
-	t_treap at(int n){
-		Node *ans = at(root, n);
-		return ans ? ans->v : -1;
-	}
-	//0-indexed [l, r]
-	t_treap query(int l, int r){
-		if (l > r)
-			swap(l, r);
-		Node *a, *b, *c, *d;
-		split(root, l, a, d);
-		split(d, r - l + 1, b, c);
-		t_treap ans = op_value(b);
-		root = merge(a, merge(b, c));
-		return ans;
-	}
-	//0-indexed [l, r]
-	void reverse(int l, int r){
-		if (l > r)
-			swap(l, r);
-		Node *a, *b, *c, *d;
-		split(root, l, a, d);
-		split(d, r - l + 1, b, c);
-		if (b != NULL)
-			b->rev ^= 1;
-		root = merge(a, merge(b, c));
-	}
+namespace ITreap{
+  const int N = 500010;
+  typedef long long treap_t;
+  treap_t X[N];
+  int en = 1, Y[N], sz[N], L[N], R[N], root;
+
+  const treap_t neutral = 0;
+  treap_t op_val[N];
+  bool rev[N];
+  inline treap_t join(treap_t a, treap_t b, treap_t c){
+    return a + b + c;
+  }
+  void calc(int u) { // update node given children info
+    sz[u] = sz[L[u]] + 1 + sz[R[u]];
+    // code here, no recursion
+    op_val[u] = join(op_val[L[u]], X[u], op_val[R[u]]);
+  }
+  void unlaze(int u) {
+    if(!u) return;
+    // code here, no recursion
+    if (rev[u]){
+      if(L[u])
+        rev[L[u]] ^= rev[u];
+      if(R[u])
+        rev[R[u]] ^= rev[u];
+      swap(L[u], R[u]);
+      rev[u] = false;
+    }
+  }
+  void split(int u, int s, int &l, int &r) { // l gets first s, r gets remaining
+    unlaze(u); 
+    if(!u) return (void) (l = r = 0);
+    if(sz[L[u]] < s) { split(R[u], s - sz[L[u]] - 1, l, r); R[u] = l; l = u; }
+    else { split(L[u], s, l, r); L[u] = r; r = u; }
+    calc(u);
+  }
+  int merge(int l, int r) { // els on l <= els on r
+    unlaze(l); unlaze(r); 
+    if(!l || !r) return l + r; 
+    int u;
+    if(Y[l] > Y[r]) { R[l] = merge(R[l], r); u = l; }
+    else { L[r] = merge(l, L[r]); u = r; }
+    calc(u); 
+    return u;
+  }
+  int new_node(treap_t x){
+    X[en] = x;
+    op_val[en] = x;
+    rev[en] = false;
+    return en++;
+  }
+  int nth(int u, int idx){
+    if(!u)
+      return 0;
+    unlaze(u); 
+    if(idx <= sz[L[u]])
+      return nth(L[u], idx);
+    else if(idx == sz[L[u]] + 1)
+      return u;
+    else
+      return nth(R[u], idx - sz[L[u]] - 1);
+  }	
+//Public
+  void init(int n=N-1) { // call before using other funcs
+    //init position 0
+    sz[0] = 0;
+    op_val[0] = neutral;
+    //init Treap
+    root = 0;
+    for(int i = en = 1; i <= n; i++) { Y[i] = i; sz[i] = 1; L[i] = R[i] = 0; }
+    random_shuffle(Y + 1, Y + n + 1);
+  }
+  //0-indexed
+  void insert(int idx, int val){ 
+    int a, b;
+    split(root, idx, a, b);
+    root = merge(merge(a, new_node(val)), b);
+  }
+  //0-indexed
+  void erase(int idx){ 
+    int a, b, c, d;
+    split(root, idx, a, b);
+    split(b, 1, c, d);
+    root = merge(a, d);    
+  }
+  //0-indexed
+  treap_t nth(int idx){
+    int u = nth(root, idx+1);
+    return X[u];
+  }	
+  //0-indexed [l, r]
+  treap_t query(int l, int r){
+    if(l > r) swap(l, r);
+    int a, b, c, d;
+    split(root, l, a, d);
+    split(d, r - l + 1, b, c);
+    treap_t ans = op_val[b];
+    root = merge(a, merge(b, c));
+    return ans;
+  }
+  //0-indexed [l, r]
+  void reverse(int l, int r){
+    if (l > r) swap(l, r);
+    int a, b, c, d;
+    split(root, l, a, d);
+    split(d, r - l + 1, b, c);
+    if(b)
+      rev[b] ^= 1;
+    root = merge(a, merge(b, c));
+  }
 };
