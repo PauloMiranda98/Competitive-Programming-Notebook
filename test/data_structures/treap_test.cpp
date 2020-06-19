@@ -23,36 +23,34 @@ int randWithNeg(){
 
 void testTreap(){
   ordered_set st;
-  Treap tp;
+  Treap::init();
   int prev = 0;
   for (int k = 0; k < MAXOP; k++){
     int op = rand() % 4;
     if (op == INSERT){
       int x = randWithNeg();
       st.insert(x);
-      tp.insert(x);
+      if (Treap::count(x) == 0)
+        Treap::insert(x);
       prev = x;
     }else if (op == ERASE){
       int x = randWithNeg();
       st.erase(x);
-      tp.erase(x);
+      Treap::erase(x);
       st.erase(prev);
-      tp.erase(prev);
+      Treap::erase(prev);
     }else if (op == COUNT){
       int x = randWithNeg();
-      assert((st.find(x) != st.end()) == tp.count(x));
-      assert((st.find(prev) != st.end()) == tp.count(prev));
+      assert((st.find(x) != st.end()) == (Treap::count(x) != 0));
+      assert((st.find(prev) != st.end()) == (Treap::count(prev) != 0));
     }else if (op == NTH){
       if (st.size() == 0)
         continue;
       int x = rand() % st.size();
-      assert((*st.find_by_order(x)) == tp.nth(x + 1));
+      assert((*st.find_by_order(x)) == Treap::nth(x + 1));
     }
-    assert(st.size() == tp.size());
+    assert((int)st.size() == Treap::size());
   }
-  st.clear();
-  tp.clear();
-  assert(st.size() == tp.size());
 }
 
 int main(){

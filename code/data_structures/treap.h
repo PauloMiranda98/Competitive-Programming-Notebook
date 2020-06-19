@@ -1,104 +1,97 @@
 #include <bits/stdc++.h>
 using namespace std;
-class Treap{
-private:
-	typedef int t_treap;
-	struct Node{
-		t_treap x, y, size;
-		Node *l, *r;
-		Node(t_treap _x) : x(_x), y(rand()), size(1), l(NULL), r(NULL) {}
-	};
-	Node *root;
-	int size(Node *t) { return t ? t->size : 0; }
-	Node *refresh(Node *t){
-		if (!t)
-			return t;
-		t->size = 1 + size(t->l) + size(t->r);
-		return t;
-	}
-	void split(Node *&t, t_treap k, Node *&a, Node *&b){
-		Node *aux;
-		if (!t){
-			a = b = NULL;
-		}else if (t->x < k){
-			split(t->r, k, aux, b);
-			t->r = aux;
-			a = refresh(t);
-		}else{
-			split(t->l, k, a, aux);
-			t->l = aux;
-			b = refresh(t);
-		}
-	}
-	Node *merge(Node *a, Node *b){
-		if (!a || !b)
-			return a ? a : b;
-		if (a->y < b->y){
-			a->r = merge(a->r, b);
-			return refresh(a);
-		}else{
-			b->l = merge(a, b->l);
-			return refresh(b);
-		}
-	}
-	Node *count(Node *t, t_treap k){
-		if (!t)
-			return NULL;
-		else if (k < t->x)
-			return count(t->l, k);
-		else if (k == t->x)
-			return t;
-		else
-			return count(t->r, k);
-	}
-	Node *nth(Node *t, int n){
-		if (!t)
-			return NULL;
-		if (n <= size(t->l))
-			return nth(t->l, n);
-		else if (n == size(t->l) + 1)
-			return t;
-		else
-			return nth(t->r, n - size(t->l) - 1);
-	}
-	void del(Node *&t){
-		if (!t)
-			return;
-		if (t->l)
-			del(t->l);
-		if (t->r)
-			del(t->r);
-		delete t;
-		t = NULL;
-	}
-public:
-	Treap() : root(NULL) {}
-	~Treap() { clear(); }
-	void clear() { del(root); }
-	int size() { return size(root); }
-	bool count(t_treap k) { return count(root, k) != NULL; }
-	bool insert(t_treap k){
-		if (count(k))
-			return false;
-		Node *a, *b;
-		split(root, k, a, b);
-		root = merge(merge(a, new Node(k)), b);
-		return true;
-	}
-	bool erase(t_treap k){
-		Node *f = count(root, k);
-		if (!f)
-			return false;
-		Node *a, *b, *c, *d;
-		split(root, k, a, b);
-		split(b, k + 1, c, d);
-		root = merge(a, d);
-		delete f;
-		return true;
-	}
-	//1-indexed
-	t_treap nth(int n){
-		Node *ans = nth(root, n);
-		return ans ? ans->x : -1;
-	}
-};
+namespace Treap{
+  const int N = 500010; 
+  typedef long long treap_t;
+  treap_t X[N];
+  int en = 1, Y[N], sz[N], L[N], R[N], root;
+
+  const treap_t neutral = 0;
+  treap_t op_val[N];
+  treap_t lazy[N];
+  inline treap_t join(treap_t a, treap_t b, treap_t c){
+    return a + b + c;
+  }
+  void calc(int u) { // update node given children info
+    sz[u] = sz[L[u]] + 1 + sz[R[u]];
+    // code here, no recursion
+    op_val[u] = join(op_val[L[u]], X[u], op_val[R[u]]);
+  }
+  void unlaze(int u) {
+    if(!u) return;
+    // code here, no recursion
+    if (lazy[u]){
+      X[u] += lazy[u];
+      if(L[u])
+        lazy[L[u]] += lazy[u];
+      if(R[u])
+        lazy[R[u]] += lazy[u];			
+      lazy[u] = 0;
+    }
+  }
+  void split(int u, treap_t x, int &l, int &r) { // l gets <= x, r gets > x
+    unlaze(u); if(!u) return (void) (l = r = 0);
+    if(X[u] <= x) { split(R[u], x, l, r); R[u] = l; l = u; }
+    else { split(L[u], x, l, r); L[u] = r; r = u; }
+    calc(u);
+  }
+  int merge(int l, int r) { // els on l <= els on r
+    unlaze(l); unlaze(r); 
+    if(!l || !r) return l + r; 
+    int u;
+    if(Y[l] > Y[r]) { R[l] = merge(R[l], r); u = l; }
+    else { L[r] = merge(l, L[r]); u = r; }
+    calc(u); 
+    return u;
+  }
+  int new_node(treap_t x){
+    X[en] = x;
+    op_val[en] = x;
+    lazy[en] = 0;
+    return en++;
+  }
+  int nth(int u, int idx){
+    if(!u)
+    return 0;
+    if(idx <= sz[L[u]])
+      return nth(L[u], idx);
+    else if(idx == sz[L[u]] + 1)
+      return u;
+    else
+      return nth(R[u], idx - sz[L[u]] - 1);
+  }	
+//Public
+  void init(int n=N-1) { // call before using other funcs
+    //init position 0
+    sz[0] = 0;
+    op_val[0] = neutral;
+    //init Treap
+    root = 0;
+    for(int i = en = 1; i <= n; i++) { Y[i] = i; sz[i] = 1; L[i] = R[i] = 0; }
+    random_shuffle(Y + 1, Y + n + 1);
+  }
+  void insert(treap_t x){
+    int a, b;
+    split(root, x, a, b);
+    root = merge(merge(a, new_node(x)), b);
+  }
+  void erase(treap_t x){
+    int a, b, c, d;
+    split(root, x-1, a, b);
+    split(b, x, c, d);
+    root = merge(a, d);
+  }
+  int count(treap_t x){
+    int a, b, c, d;
+    split(root, x-1, a, b);
+    split(b, x, c, d);
+    int ans = sz[c];
+    root = merge(a, merge(c, d));
+    return ans;
+  }
+  int size(){ return sz[root];}
+  treap_t nth(int idx){ //1-indexed
+    int u = nth(root, idx);
+    return X[u];
+  }	
+}; 
