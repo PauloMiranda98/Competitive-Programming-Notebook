@@ -15,6 +15,7 @@
 - [x] [Segment Tree 2D](code/data_structures/segment_tree_2d.h)
 - [x] [Segment Tree Iterative](code/data_structures/segment_tree_iterative.h)
 - [x] [Segment Tree Lazy](code/data_structures/segment_tree_lazy.h)
+- [x] [Segment Tree Persistent](code/data_structures/segment_tree_persistent.h)
 - [x] [Sparse Table](code/data_structures/sparse_table.h)
 - [x] [SQRT Decomposition](code/data_structures/sqrt_decomposition.h)
 - [x] [SQRT Tree](code/data_structures/sqrt_tree.h)
