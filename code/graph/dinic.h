@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
+//O(v^2*E): for generic graph
+//O(sqrt(V)*E): for bipartite graph
 template <typename flow_t>
 struct Dinic{
   struct FlowEdge{
@@ -48,6 +50,7 @@ struct Dinic{
     }
     return 0;
   }
+//Public:
   Dinic(){}
   void init(int _n){
     n = _n;  
