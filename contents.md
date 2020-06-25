@@ -59,6 +59,7 @@
 - [x] [Basic Geometry](code/geometry/basic_geometry.h)
 - [x] [Circle Area Union](code/geometry/circle_area_union.h)
 - [x] [Count Lattices](code/geometry/count_lattices.h)
+- [x] [Convex Hull](code/geometry/convex_hull.h)
 - [x] [Nearest Pair Of Points](code/geometry/nearest_pair_of_points.h)
 - [x] [Point 3D](code/geometry/point3d.h)
 
