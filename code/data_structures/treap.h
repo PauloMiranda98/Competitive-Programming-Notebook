@@ -27,6 +27,13 @@ namespace Treap{
     else { split(L[u], x, l, r); L[u] = r; r = u; }
     calc(u);
   }
+  void split_sz(int u, int s, int &l, int &r) { // l gets first s, r gets remaining
+    unlaze(u); 
+    if(!u) return (void) (l = r = 0);
+    if(sz[L[u]] < s) { split_sz(R[u], s - sz[L[u]] - 1, l, r); R[u] = l; l = u; }
+    else { split_sz(L[u], s, l, r); L[u] = r; r = u; }
+    calc(u);
+  }  
   int merge(int l, int r) { // els on l <= els on r
     unlaze(l); unlaze(r); 
     if(!l || !r) return l + r; 
@@ -70,7 +77,7 @@ namespace Treap{
   void erase(treap_t x){
     int a, b, c, d;
     split(root, x-1, a, b);
-    split(b, x, c, d);
+    split_sz(b, 1, c, d);
     root = merge(a, d);
   }
   int count(treap_t x){
@@ -87,4 +94,12 @@ namespace Treap{
     int u = nth(root, idx + 1);
     return X[u];
   }	
+  //Query in k smallest elements
+  treap_t query(int k){
+    int a, b;
+    split_sz(root, k, a, b);
+    treap_t ans = op_val[a];
+    root = merge(a, b);
+    return ans;
+  }
 }; 
