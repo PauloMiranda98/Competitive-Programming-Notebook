@@ -77,8 +77,9 @@ namespace Treap{
   void erase(treap_t x){
     int a, b, c, d;
     split(root, x-1, a, b);
-    split_sz(b, 1, c, d);
-    root = merge(a, d);
+    split(b, x, c, d);
+    split_sz(c, 1, b, c);
+    root = merge(a, merge(c, d));
   }
   int count(treap_t x){
     int a, b, c, d;
