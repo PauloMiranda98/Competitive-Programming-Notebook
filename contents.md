@@ -58,6 +58,7 @@
 **Geometry**
 - [x] [Basic Geometry](code/geometry/basic_geometry.h)
 - [x] [Circle Area Union](code/geometry/circle_area_union.h)
+- [x] [Circles to Tree](code/geometry/circles_to_tree.h)
 - [x] [Count Lattices](code/geometry/count_lattices.h)
 - [x] [Convex Hull](code/geometry/convex_hull.h)
 - [x] [Convex Hull Trick](code/geometry/convex_hull_trick.h)
