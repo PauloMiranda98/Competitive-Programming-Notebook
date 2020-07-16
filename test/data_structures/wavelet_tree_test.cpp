@@ -41,13 +41,13 @@ void testQuery(){
     cp[i] = v[i];
   }
 
-  WaveletTree wt(cp + 1, cp + MAXN + 1, -MAXX, MAXX);
+  WaveletTree::init(cp + 1, cp + MAXN + 1, -MAXX, MAXX);
   for (int i = 1; i <= MAXN; i++){
     for (int j = i; j <= MAXN; j++){
       for (int k = 1; k <= (j - i + 1); k++){
-        assert(wt.lte(i, j, v[i + k - 1]) == lte(i, j, v[i + k - 1]));
-        assert(wt.kth(i, j, k) == kth(i, j, k));
-        assert(wt.count(i, j, v[i + k - 1]) == count(i, j, v[i + k - 1]));
+        assert(WaveletTree::lte(i, j, v[i + k - 1]) == lte(i, j, v[i + k - 1]));
+        assert(WaveletTree::kth(i, j, k) == kth(i, j, k));
+        assert(WaveletTree::count(i, j, v[i + k - 1]) == count(i, j, v[i + k - 1]));
       }
     }
   }
