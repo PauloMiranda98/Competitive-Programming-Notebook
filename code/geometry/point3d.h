@@ -68,6 +68,17 @@ Point3d rotateY(Point3d p, double ang){
 Point3d rotateZ(Point3d p, double ang){
   return Point3d(p.x*cos(ang)-p.y*sin(ang), p.x*sin(ang)+p.y*cos(ang), p.z);
 }
+//Rotation in relation to the normal axis
+Point3d rotateNormal(Point3d v, Point3d n, double ang){
+  double theta = getAngleTheta(n);
+  double phi = getAnglePhi(n);
+  v = rotateZ(v, -theta);
+  v = rotateY(v, -phi);
+  v = rotateZ(v, ang);
+  v = rotateY(v, phi);
+  v = rotateZ(v, theta); 
+  return v; 
+}
 Point3d cross(Point3d a, Point3d b){
   return Point3d(a.y * b.z - a.z * b.y,
                  a.z * b.x - a.x * b.z,
