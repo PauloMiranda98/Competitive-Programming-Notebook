@@ -49,8 +49,24 @@ double dist(Point3d a, Point3d b){
 double proj(Point3d a, Point3d b){
   return dot(a, b) / len(b);
 }
-double angle(Point3d a, Point3d b){
-  return acos(dot(a, b) / len(a) / len(b));
+//theta -> XY; phi -> ZY;
+Point3d toVetor(double theta, double phi, double r){
+  return Point3d(r*cos(theta)*sin(phi), r*sin(theta)*sin(phi), r*cos(phi));
+}
+double getAngleTheta(Point3d p){
+  return atan2(p.y, p.x);
+}
+double getAnglePhi(Point3d p){
+  return acos(p.z/len(p));
+}
+Point3d rotateX(Point3d p, double ang){
+  return Point3d(p.x, p.y*cos(ang)-p.z*sin(ang), p.y*sin(ang)+p.z*cos(ang));
+}
+Point3d rotateY(Point3d p, double ang){
+  return Point3d(p.x*cos(ang)+p.z*sin(ang), p.y, -p.x*sin(ang)+p.z*cos(ang));
+}
+Point3d rotateZ(Point3d p, double ang){
+  return Point3d(p.x*cos(ang)-p.y*sin(ang), p.x*sin(ang)+p.y*cos(ang), p.z);
 }
 Point3d cross(Point3d a, Point3d b){
   return Point3d(a.y * b.z - a.z * b.y,
