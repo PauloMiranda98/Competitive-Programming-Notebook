@@ -15,6 +15,14 @@ ull fastPow(ull base, ull exp, ull mod){
   }
   return ans;
 }
+int fastPow(int base, string bigExp, int mod){
+  int ans = 1;
+  for(char c: bigExp){
+    ans = fastPow(ans, 10, mod);
+    ans = (ans*1LL*fastPow(base, c-'0', mod))%mod;
+  }
+  return ans;
+}
 ll gcd(ll a, ll b){ return __gcd(a, b); }
 ll lcm(ll a, ll b){ return (a / gcd(a, b)) * b; }
 void enumeratingAllSubmasks(int mask){
