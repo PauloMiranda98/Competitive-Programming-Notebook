@@ -1,14 +1,4 @@
 #include "../../code/math/matrix.h"
-Matrix fastPow(Matrix base, ll exp, ll mod = MOD){
-	Matrix ans(true);
-	while (exp > 0){
-		if (exp & 1LL)
-			ans = ans * base;
-		base = base * base;
-		exp >>= 1;
-	}
-	return ans;
-}
 int nthFib(int n){
   if(n < 1)
     return 0;
