@@ -67,6 +67,7 @@
 
 **String Algorithms**
 - [x] [Min Cyclic String](code/strings/min_cyclic_string.h)
+- [x] [String Hashing](code/strings/hashing.h)
 - [x] [Suffix Automaton](code/strings/suffix_automaton.h)
 
 **Miscellaneous**
@@ -78,5 +79,6 @@
 - [x] [Catalan Number](code/theorems_and_formulas/catalan_number.tex)
 - [x] [Euler's Totient](code/theorems_and_formulas/eulers_totient.tex)
 - [x] [Formulas](code/theorems_and_formulas/formulas.tex)
+- [x] [Graph](code/theorems_and_formulas/graph.tex)
 - [x] [Manhattan Distance](code/theorems_and_formulas/manhattan_distance.tex)
 - [x] [Primes](code/theorems_and_formulas/primes.tex)

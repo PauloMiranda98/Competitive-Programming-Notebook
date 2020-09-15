@@ -29,3 +29,13 @@ struct Matrix{
     return ans;
   }
 };
+Matrix fastPow(Matrix base, ll exp){
+  Matrix ans(true);
+  while(exp){
+    if(exp&1LL)
+      ans = ans * base;
+    base = base*base;
+    exp>>=1;
+  }
+  return ans;
+}
