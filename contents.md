@@ -26,6 +26,7 @@
 
 **Graph Algorithms**
 - [x] [2-SAT](code/graph/2_sat.h)
+- [x] [Arborescence](code/graph/arborescence.h)
 - [x] [Centroid Decomposition](code/graph/centroid_decomposition.h)
 - [x] [Dinic](code/graph/dinic.h)
 - [x] [Flow With Demand](code/graph/flow_with_demand.h)
