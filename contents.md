@@ -76,6 +76,7 @@
 **Miscellaneous**
 - [x] [Longest Increasing Subsequence](code/miscellaneous/lis.h)
 - [x] [Mo Algorithm](code/miscellaneous/mo_algorithm.h)
+- [x] [Polyominoes](code/miscellaneous/polyominoes.h)
 
 **Theorems and Formulas**
 - [x] [Binomial Coefficients](code/theorems_and_formulas/binomial_coefficients.tex)
