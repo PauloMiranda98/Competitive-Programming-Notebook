@@ -39,7 +39,28 @@ void testUpdateAndQuery(){
   }
 }
 
+void testLowerBound(){
+  srand(42);
+  for (int i = 0; i < MAXN; i++){
+    v[i] = rand()%5;
+  }
+
+  SegTreeIterative st(v, v + MAXN);
+  for (int i = 0; i < MAXN; i++){
+    int k = rand()%MAXN;
+    int ans = -1;
+    for(int j=0; j < MAXN; j++){
+      if(st.query(0, j) >= k){
+        ans = j;
+        break;
+      }
+    }
+    assert(st.lower_bound(k) == ans);
+  }
+}
+
 int main(){
   testUpdateAndQuery();
+  testLowerBound();
   return 0;
 }
