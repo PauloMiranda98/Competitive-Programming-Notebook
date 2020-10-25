@@ -1,29 +1,22 @@
 #include "../../code/geometry/nearest_pair_of_points.h"
-const double EPS = 1e-4;
+const double EPS = 1e-6;
 void test1(){
   vector<pt> v;
-  v.emplace_back(0, 0);
-  v.emplace_back(0, 1);
-  v.emplace_back(100, 45);
-  v.emplace_back(2, 3);
-  v.emplace_back(9, 9);
+  for(int i=0; i<100; i++)
+    v.emplace_back(rand(), rand());
+  
   NearestPairOfPoints::solve(v);
   auto ans = NearestPairOfPoints::mindist;
-  assert(abs(ans-1) < EPS);
-}
-void test2(){
-  vector<pt> v;
-  v.emplace_back(0, 0);
-  v.emplace_back(-4, 1);
-  v.emplace_back(-7, -2);
-  v.emplace_back(4, 5);
-  v.emplace_back(1, 1);
-  NearestPairOfPoints::solve(v);
-  auto ans = NearestPairOfPoints::mindist;
-  assert(abs(ans-1.414214) < EPS);
+  
+  double mn = 1e20;
+  for(int i=0; i<100; i++)
+    for(int j=i+1; j<100; j++)
+      mn = min(mn, sqrt((v[i].x - v[j].x)*(v[i].x - v[j].x) + (v[i].y - v[j].y)*(v[i].y - v[j].y)));
+  assert(abs(ans-mn) < EPS);
 }
 int main(){
-  test1();
-  test2();
+  srand(98);
+  for(int i=0; i<5; i++)
+    test1();
   return 0;
 }
