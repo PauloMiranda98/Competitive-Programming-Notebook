@@ -10,6 +10,7 @@
 - [x] [LiChao Tree](code/data_structures/lichao_tree.h)
 - [x] [Policy Based Tree](code/data_structures/policy_based_tree.h)
 - [x] [Queue Query](code/data_structures/queue_query.h)
+- [x] [Randomized Heap](code/data_structures/randomized_heap.h)
 - [x] [Range Color](code/data_structures/range_color.h)
 - [x] [Segment Tree](code/data_structures/segment_tree.h)
 - [x] [Segment Tree 2D](code/data_structures/segment_tree_2d.h)
