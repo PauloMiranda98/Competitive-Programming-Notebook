@@ -7,7 +7,7 @@ struct Dinic{
   struct FlowEdge{
     int from, to;
     flow_t cap, flow = 0;
-    FlowEdge(int from, int to, flow_t cap) : from(from), to(to), cap(cap) {}
+    FlowEdge(int f, int t, flow_t c) : from(f), to(t), cap(c) {}
   };
   const flow_t flow_inf = numeric_limits<flow_t>::max();
   vector<FlowEdge> edges;
