@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 struct pt {
-  int x, y, id;
+  long long x, y, id;
   pt(){}
   pt(int _x, int _y, int _id=-1):x(_x), y(_y), id(_id){}
 };
