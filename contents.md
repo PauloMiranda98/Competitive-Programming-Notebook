@@ -28,6 +28,10 @@
 **Graph Algorithms**
 - [x] [2-SAT](code/graph/2_sat.h)
 - [x] [Arborescence](code/graph/arborescence.h)
+- [x] [Articulation Point](code/graph/articulation_point.h)
+- [x] [BFS 0-1](code/graph/bfs01.h)
+- [x] [Bridge](code/graph/bridge.h)
+- [x] [Centroid](code/graph/centroid.h)
 - [x] [Centroid Decomposition](code/graph/centroid_decomposition.h)
 - [x] [Dinic](code/graph/dinic.h)
 - [x] [Flow With Demand](code/graph/flow_with_demand.h)
@@ -37,6 +41,7 @@
 - [x] [Minimum Cost Maximum Flow](code/graph/minimum_cost_maximum_flow.h)
 - [x] [Strongly Connected Component](code/graph/strongly_connected_component.h)
 - [x] [Topological Sort](code/graph/topological_sort.h)
+- [x] [Tree ID](code/graph/tree_id.h)
 
 **Dynamic Programming**
 - [x] [Divide and Conquer Optimization](code/dynamic_programming/dc_optimization.tex)
