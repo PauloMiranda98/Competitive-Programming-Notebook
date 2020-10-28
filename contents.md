@@ -74,6 +74,7 @@
 - [x] [Point 3D](code/geometry/point3d.h)
 
 **String Algorithms**
+- [x] [Aho Corasick](code/strings/aho_corasick.h)
 - [x] [Min Cyclic String](code/strings/min_cyclic_string.h)
 - [x] [String Hashing](code/strings/hashing.h)
 - [x] [Suffix Automaton](code/strings/suffix_automaton.h)
