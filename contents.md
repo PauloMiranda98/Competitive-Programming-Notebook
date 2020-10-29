@@ -5,7 +5,7 @@
 - [x] [BIT 2D](code/data_structures/bit2d.h)
 - [x] [BIT In Range](code/data_structures/bit_range.h)
 - [x] [Dynamic Median](code/data_structures/dynamic_median.h) 
-- [x] [Dynamic Wavelet Tree](code/data_structures/dynamic_wavelet_tree.h)
+- [ ] [Dynamic Wavelet Tree](code/data_structures/dynamic_wavelet_tree.h)
 - [x] [Implicit Treap](code/data_structures/implicit_treap.h)
 - [x] [LiChao Tree](code/data_structures/lichao_tree.h)
 - [x] [Policy Based Tree](code/data_structures/policy_based_tree.h)
@@ -75,6 +75,7 @@
 
 **String Algorithms**
 - [x] [Aho Corasick](code/strings/aho_corasick.h)
+- [x] [KMP](code/strings/kmp.h)
 - [x] [Min Cyclic String](code/strings/min_cyclic_string.h)
 - [x] [String Hashing](code/strings/hashing.h)
 - [x] [Suffix Automaton](code/strings/suffix_automaton.h)
