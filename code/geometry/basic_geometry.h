@@ -23,7 +23,7 @@ using namespace std;
 struct Point2d{
   ftype x, y;
   Point2d() {}
-  Point2d(ftype x, ftype y) : x(x), y(y) {}
+  Point2d(ftype x1, ftype y1) : x(x1), y(y1) {}
   Point2d operator+(const Point2d &t){
     return Point2d(x + t.x, y + t.y);
   }
@@ -81,18 +81,18 @@ Point2d perpL(Point2d a){
 }
 //0-> 1o,2o quadrant, 1-> 3o,4o
 int half(Point2d &p){
-	if (gt(p.y, 0) or (eq(p.y, 0) and ge(p.x, 0)))
-		return 0;
-	else
-		return 1;
+  if (gt(p.y, 0) or (eq(p.y, 0) and ge(p.x, 0)))
+    return 0;
+  else
+    return 1;
 }
 //angle(a) < angle(b)
 bool cmpByAngle(Point2d a, Point2d b){
-	int ha = half(a), hb = half(b);
-	if (ha != hb)
-		return ha < hb;
-	else
-		return gt(cross(a, b), 0);
+  int ha = half(a), hb = half(b);
+  if (ha != hb)
+    return ha < hb;
+  else
+    return gt(cross(a, b), 0);
 }
 inline int sgn(ftLong x){
   return ge(x, 0) ? (eq(x, 0) ? 0 : 1) : -1;
@@ -101,18 +101,18 @@ inline int sgn(ftLong x){
 // 0: angle(a, b) = angle(b, c)
 //+1: angle(a, b) > angle(b, c)
 int cmpAngleBetweenVectors(Point2d a, Point2d b, Point2d c){
-	ftLong dotAB = dot(a, b), dotBC = dot(b, c);
-	int sgnAB = sgn(dotAB), sgnBC = sgn(dotBC);
-	if(sgnAB == sgnBC){
-		ftLong l = pw2(dotAB)*dot(c, c), r = pw2(dotBC)*dot(a, a);
-		if(l == r)
-			return 0;
-		if(sgnAB == 1)
-			return (l > r)? -1 : +1;
-		return (l < r)? -1 : +1;
-	}else{
-		return (sgnAB > sgnBC)? -1 : +1;
-	}		
+  ftLong dotAB = dot(a, b), dotBC = dot(b, c);
+  int sgnAB = sgn(dotAB), sgnBC = sgn(dotBC);
+  if(sgnAB == sgnBC){
+    ftLong l = pw2(dotAB)*dot(c, c), r = pw2(dotBC)*dot(a, a);
+    if(l == r)
+      return 0;
+    if(sgnAB == 1)
+      return (l > r)? -1 : +1;
+    return (l < r)? -1 : +1;
+  }else{
+    return (sgnAB > sgnBC)? -1 : +1;
+  }   
 }
 //Line parameterized: r1 = a1 + d1*t
 //This function can be generalized to 3D
@@ -159,7 +159,7 @@ ftLong det(ftype a, ftype b, ftype c, ftype d){
 struct Line{
   ftype a, b, c;
   Line() {}
-  Line(ftype a, ftype b, ftype c) : a(a), b(b), c(c){
+  Line(ftype a1, ftype b1, ftype c1) : a(a1), b(b1), c(c1){
     normalize();
   }
   Line(Point2d p1, Point2d p2){
@@ -211,7 +211,7 @@ double dist(Line m, ftype x, ftype y){
 struct Segment{
   Point2d a, b;
   Segment() {}
-  Segment(Point2d a, Point2d b) : a(a), b(b) {}
+  Segment(Point2d a1, Point2d b1) : a(a1), b(b1) {}
 };
 bool inter1d(ftype a, ftype b, ftype c, ftype d){
   if (a > b)
@@ -259,7 +259,7 @@ bool intersect(Segment s1, Segment s2, Segment &ans){
 struct Circle{
   ftype x, y, r;
   Circle() {}
-  Circle(ftype x, ftype y, ftype r) : x(x), y(y), r(r){};
+  Circle(ftype x1, ftype y1, ftype r1) : x(x1), y(y1), r(r1){};
 };
 bool pointInCircle(Circle c, Point2d p){
   return ge(c.r, dist(Point2d(c.x, c.y), p));
