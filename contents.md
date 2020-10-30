@@ -54,6 +54,7 @@
 - [x] [BigInt](code/math/bigint.h)
 - [x] [Binomial Coefficients](code/math/binomial_coefficients.h)
 - [x] [Chinese Remainder Theorem](code/math/chinese_remainder_theorem.h)
+- [x] [Division Trick](code/math/division_trick.h)
 - [x] [Euler's totient](code/math/eulers_totient.h)
 - [x] [Extended Euclidean](code/math/extended_euclidean.h)
 - [x] [Fraction](code/math/fraction.h)
