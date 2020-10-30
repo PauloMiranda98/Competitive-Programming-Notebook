@@ -89,10 +89,15 @@ int half(Point2d &p){
 //angle(a) < angle(b)
 bool cmpByAngle(Point2d a, Point2d b){
   int ha = half(a), hb = half(b);
-  if (ha != hb)
+  if (ha != hb){
     return ha < hb;
-  else
-    return gt(cross(a, b), 0);
+  }else{
+    ftLong c = cross(a, b);
+    if(eq(c, 0))
+      return lt(norm(a), norm(b));
+    else
+      return gt(c, 0);
+  }
 }
 inline int sgn(ftLong x){
   return ge(x, 0) ? (eq(x, 0) ? 0 : 1) : -1;
