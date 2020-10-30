@@ -8,6 +8,7 @@
 - [ ] [Dynamic Wavelet Tree](code/data_structures/dynamic_wavelet_tree.h)
 - [x] [Implicit Treap](code/data_structures/implicit_treap.h)
 - [x] [LiChao Tree](code/data_structures/lichao_tree.h)
+- [x] [MergeSort Tree](code/data_structures/merge_sort_tree.h)
 - [x] [Policy Based Tree](code/data_structures/policy_based_tree.h)
 - [x] [Queue Query](code/data_structures/queue_query.h)
 - [x] [Randomized Heap](code/data_structures/randomized_heap.h)
