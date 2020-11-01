@@ -78,6 +78,7 @@
 **String Algorithms**
 - [x] [Aho Corasick](code/strings/aho_corasick.h)
 - [x] [KMP](code/strings/kmp.h)
+- [x] [Manacher](code/strings/manacher.h)
 - [x] [Min Cyclic String](code/strings/min_cyclic_string.h)
 - [x] [String Hashing](code/strings/hashing.h)
 - [x] [Suffix Automaton](code/strings/suffix_automaton.h)
