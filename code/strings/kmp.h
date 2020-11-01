@@ -31,17 +31,21 @@ vector<int> prefixOccurrences(string &s){
   ans.pop_back();
   return ans;
 }
+int K = 26;
+inline int getID(char c){
+  return c-'a';
+}
 vector<vector<int>> computeAutomaton(string s) {
   s += '#';
   int n = s.size();
   vector<int> pi = kmp(s);
   vector<vector<int>> aut(n, vector<int>(26));
   for(int i = 0; i < n; i++){
-    for(int c = 0; c < 26; c++){
-      if(i > 0 and ('a' + c) != s[i])
+    for(int c = 0; c < K; c++){
+      if(i > 0 and c != getID(s[i]))
         aut[i][c] = aut[pi[i-1]][c];
       else
-        aut[i][c] = i + (('a' + c) == s[i]);
+        aut[i][c] = i + (c == getID(s[i]));
     }
   }
   return aut;
