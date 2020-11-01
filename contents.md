@@ -84,6 +84,7 @@
 - [x] [Suffix Automaton](code/strings/suffix_automaton.h)
 - [x] [Suffix Tree](code/strings/suffix_tree.h)
 - [x] [Trie](code/strings/trie.h)
+- [x] [Z Function](code/strings/z_function.h)
 
 **Miscellaneous**
 - [x] [Longest Increasing Subsequence](code/miscellaneous/lis.h)
