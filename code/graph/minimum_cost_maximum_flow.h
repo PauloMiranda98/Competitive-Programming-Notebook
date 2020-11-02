@@ -91,30 +91,3 @@ public:
     list.push_back(Edge(from, 0, -cost));
   }
 };
-/*bool dij(int src, int sink){
-  T INF = numeric_limits<T>::max();
-  dist.assign(n, INF);
-  from.assign(n, -1);
-  visit.assign(n, false);
-  dist[src] = 0;
-  for(int i = 0; i < n; i++){
-    int best = -1;
-    for(int j = 0; j < n; j++){
-      if(visit[j]) continue;
-      if(best == -1 || dist[best] > dist[j]) best = j;
-    }
-    if(dist[best] >= INF) break;
-    visit[best] = true;
-    for(auto e : edges[best]){
-      auto ed = list[e];
-      if(ed.cap == 0) continue;
-      T toDist = dist[best] + ed.cost + pot[best] - pot[ed.to];
-      assert(toDist >= dist[best]);
-      if(toDist < dist[ed.to]){
-        dist[ed.to] = toDist;
-        from[ed.to] = e;
-      }
-    }
-  }
-  return dist[sink] < INF;
-}*/
