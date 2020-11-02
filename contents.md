@@ -88,6 +88,8 @@
 - [x] [Z Function](code/strings/z_function.h)
 
 **Miscellaneous**
+- [x] [Counting Inversions](code/miscellaneous/counting_inversions.h)
+- [x] [Kadane 1D and 2D](code/miscellaneous/kadane.h)
 - [x] [Longest Increasing Subsequence](code/miscellaneous/lis.h)
 - [x] [Mo Algorithm](code/miscellaneous/mo_algorithm.h)
 - [x] [Polyominoes](code/miscellaneous/polyominoes.h)
