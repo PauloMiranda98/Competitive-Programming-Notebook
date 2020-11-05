@@ -39,9 +39,13 @@ void test2(){
     reverse(v.begin(), v.end());
   }
 }
-
+void test3(){
+  assert(true); // AC: https://vjudge.net/problem/UVA-634
+  assert(true); // AC: https://open.kattis.com/problems/pointinpolygon
+}
 int main() {
   test1();
   test2();
+  test3();
   return 0;
 }
