@@ -70,8 +70,10 @@
 - [x] [Circle Area Union](code/geometry/circle_area_union.h)
 - [x] [Circles to Tree](code/geometry/circles_to_tree.h)
 - [x] [Count Lattices](code/geometry/count_lattices.h)
+- [x] [Concave Polygon](code/geometry/concave_polygon.h)
 - [x] [Convex Hull](code/geometry/convex_hull.h)
 - [x] [Convex Hull Trick](code/geometry/convex_hull_trick.h)
+- [x] [Convex Polygon](code/geometry/convex_polygon.h)
 - [x] [Nearest Pair Of Points](code/geometry/nearest_pair_of_points.h)
 - [x] [Point 3D](code/geometry/point3d.h)
 
