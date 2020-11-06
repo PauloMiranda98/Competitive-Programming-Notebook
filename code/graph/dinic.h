@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-//O(v^2*E): for generic graph
-//O(sqrt(V)*E): for bipartite graph
+//O((V^2)*E): for generic graph.
+//O(sqrt(V)*E): on unit networks. A unit network is a network in which all the edges have unit capacity, and for any vertex except s and t either incoming or outgoing edge is unique. That's exactly the case with the network we build to solve the maximum matching problem with flows.
 template <typename flow_t>
 struct Dinic{
   struct FlowEdge{
@@ -69,6 +69,7 @@ struct Dinic{
   flow_t maxFlow(int s1, int t1){
     s = s1, t = t1;
     flow_t f = 0;
+    //Reset Flow
     for(int i=0; i<m; i++)
       edges[i].flow = 0;
     while (true){
