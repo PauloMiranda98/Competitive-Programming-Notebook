@@ -92,10 +92,14 @@
 
 **Miscellaneous**
 - [x] [Counting Inversions](code/miscellaneous/counting_inversions.h)
+- [x] [Histogram](code/miscellaneous/histogram.h)
+- [x] [Identify Pattern](code/miscellaneous/identify_pattern.h)
 - [x] [Kadane 1D and 2D](code/miscellaneous/kadane.h)
 - [x] [Longest Increasing Subsequence](code/miscellaneous/lis.h)
 - [x] [Mo Algorithm](code/miscellaneous/mo_algorithm.h)
 - [x] [Polyominoes](code/miscellaneous/polyominoes.h)
+- [x] [Scheduling Jobs](code/miscellaneous/scheduling_jobs.h)
+- [x] [Sprague Grundy](code/miscellaneous/sprague_grundy.h)
 
 **Theorems and Formulas**
 - [x] [Binomial Coefficients](code/theorems_and_formulas/binomial_coefficients.tex)
