@@ -2,6 +2,7 @@
 using namespace std;
 #define POINT_DOUBLE
 #ifdef POINT_DOUBLE
+  // Se necessario, apelar para __float128
   typedef double ftype;
   typedef long double ftLong;
   const double EPS = 1e-9;
