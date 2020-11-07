@@ -8,6 +8,7 @@ bool cw(Point2d a, Point2d b, Point2d c) {
 bool ccw(Point2d a, Point2d b, Point2d c) {
   return gt(cross(b - a, c - b), 0);
 }
+// Returns the points clockwise
 vector<Point2d> convex_hull(vector<Point2d> a){
   if (a.size() == 1)
     return a;

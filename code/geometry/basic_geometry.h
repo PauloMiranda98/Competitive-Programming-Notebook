@@ -109,12 +109,13 @@ int cmpAngleBetweenVectors(Point2d a, Point2d b, Point2d c){
   ftLong dotAB = dot(a, b), dotBC = dot(b, c);
   int sgnAB = sgn(dotAB), sgnBC = sgn(dotBC);
   if(sgnAB == sgnBC){
+    //Careful with overflow
     ftLong l = pw2(dotAB)*dot(c, c), r = pw2(dotBC)*dot(a, a);
     if(l == r)
       return 0;
     if(sgnAB == 1)
-      return (l > r)? -1 : +1;
-    return (l < r)? -1 : +1;
+      return gt(l, r)? -1 : +1;
+    return lt(l, r)? -1 : +1;
   }else{
     return (sgnAB > sgnBC)? -1 : +1;
   }   
@@ -219,15 +220,13 @@ struct Segment{
   Segment(Point2d a1, Point2d b1) : a(a1), b(b1) {}
 };
 bool inter1d(ftype a, ftype b, ftype c, ftype d){
-  if (a > b)
-    swap(a, b);
-  if (c > d)
-    swap(c, d);
+  if (gt(a, b)) swap(a, b);
+  if (gt(c, d)) swap(c, d);
   return le(max(a, c), min(b, d));
 }
 bool check_intersection(Segment s1, Segment s2){
   Point2d a = s1.a, b = s1.b, c = s2.a, d = s2.b;
-  if (cross(a - c, d - c) == 0 && cross(b - c, d - c) == 0)
+  if (eq(cross(a - c, d - c), 0) && eq(cross(b - c, d - c), 0))
     return inter1d(a.x, b.x, c.x, d.x) && inter1d(a.y, b.y, c.y, d.y);
   return sgn(cross(b - a, c - a)) != sgn(cross(b - a, d - a)) &&
          sgn(cross(d - c, a - c)) != sgn(cross(d - c, b - c));

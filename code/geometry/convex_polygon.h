@@ -9,6 +9,7 @@ bool pointInSegment(Point2d &a, Point2d &b, Point2d &p) {
 struct ConvexPolygon{
   vector<Point2d> vp;  
   ConvexPolygon(vector<Point2d> aux){
+    //The points have to be clockwise
     vp = convex_hull(aux);
   }  
   //O(log(N))
@@ -25,7 +26,7 @@ struct ConvexPolygon{
     int pos = 1, l = 1, r = vp.size() - 2;    
     while(l <= r){
       int mid = (l + r)/2;
-      if(cross(vp[mid] - vp[0], point - vp[0]) <= 0){
+      if(le(cross(vp[mid] - vp[0], point - vp[0]), 0)){
         pos = mid;
         l = mid+1;
       }else{ 
