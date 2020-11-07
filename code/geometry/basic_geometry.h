@@ -46,6 +46,9 @@ struct Point2d{
   friend std::istream& operator >> (std::istream &is, Point2d &p) {
     return is >> p.x >> p.y;
   }  
+  friend std::ostream& operator << (std::ostream &os, const Point2d &p) {
+    return os << p.x << ' ' << p.y;
+  }
 };
 ftLong pw2(ftype a){
   return a * (ftLong)a;
