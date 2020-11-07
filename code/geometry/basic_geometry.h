@@ -137,8 +137,8 @@ double dist(Point2d a, Point2d pl1, Point2d pl2){
   //h = area/base
   return abs(crs / dist(pl1, pl2));
 }
-double area(vector<Point2d> p){
-  double ret = 0;
+long double area(vector<Point2d> p){
+  long double ret = 0;
   for (int i = 2; i < (int)p.size(); i++)
     ret += cross(p[i] - p[0], p[i - 1] - p[0]) / 2.0;
   return abs(ret);
@@ -146,7 +146,7 @@ double area(vector<Point2d> p){
 ftLong signed_area_parallelogram(Point2d p1, Point2d p2, Point2d p3){
   return cross(p2 - p1, p3 - p2);
 }
-double triangle_area(Point2d p1, Point2d p2, Point2d p3){
+long double triangle_area(Point2d p1, Point2d p2, Point2d p3){
   return abs(signed_area_parallelogram(p1, p2, p3)) / 2.0;
 }
 bool pointInTriangle(Point2d a, Point2d b, Point2d c, Point2d p){
