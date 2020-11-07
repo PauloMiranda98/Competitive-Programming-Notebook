@@ -34,6 +34,7 @@
 - [x] [Bridge](code/graph/bridge.h)
 - [x] [Centroid](code/graph/centroid.h)
 - [x] [Centroid Decomposition](code/graph/centroid_decomposition.h)
+- [ ] [Dijkstra](code/graph/dijkstra.h)
 - [x] [Dinic](code/graph/dinic.h)
 - [x] [Flow With Demand](code/graph/flow_with_demand.h)
 - [x] [Kruskal](code/graph/kruskal.h)
