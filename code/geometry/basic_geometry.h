@@ -43,6 +43,9 @@ struct Point2d{
   bool operator==(const Point2d &o) const{
     return eq(x, o.x) and eq(y, o.y);
   }
+  friend std::istream& operator >> (std::istream &is, Point2d &p) {
+    return is >> p.x >> p.y;
+  }  
 };
 ftLong pw2(ftype a){
   return a * (ftLong)a;
@@ -181,6 +184,7 @@ struct Line{
 #else
     ftype z = __gcd(abs(a), __gcd(abs(b), abs(c)));
 #endif
+    if(eq(z, 0)) return;
     a /= z;
     b /= z;
     c /= z;
