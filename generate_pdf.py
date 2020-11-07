@@ -39,7 +39,7 @@ def run_test(filename):
     print("------------------------------------------")
     print("Runnig the %s test: " % testFileName)
     print("Compiling...")
-    retCompile = os.system("g++ -std='c++14' %s -o testApp" % testFileName)
+    retCompile = os.system("g++ -std='c++17' %s -o testApp" % testFileName)
     if(retCompile != 0):
       raise ValueError("Error compiling test %s!" % testFileName)
     print("Runnig the test...")
