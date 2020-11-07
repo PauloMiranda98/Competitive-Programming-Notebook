@@ -132,7 +132,17 @@ int cmpAngleBetweenVectors(Point2d a, Point2d b, Point2d c){
 Point2d intersect(Point2d a1, Point2d d1, Point2d a2, Point2d d2){
   return a1 + d1 * (cross(a2 - a1, d2) / cross(d1, d2));
 }
-//distance between the point(a) e line(pl1, pl2)
+//Distance between the point(a) and segment(ps1, ps2)
+//This function can be generalized to 3D
+ftLong distance_point_to_segment(Point2d a, Point2d ps1, Point2d ps2) {
+  if(ps1 == ps2)
+    return dist(ps1, a);
+  Point2d d = ps2 - ps1;
+  ftLong t = max(ftLong(0), min(ftLong(1), dot(a-ps1, d)/len(d)));
+  Point2d proj = ps1 + Point2d(d.x*t, d.y*t);
+  return dist(a, proj);
+}
+//Distance between the point(a) and line(pl1, pl2)
 //This function can be generalized to 3D
 double dist(Point2d a, Point2d pl1, Point2d pl2){
   //crs = parallelogram area
