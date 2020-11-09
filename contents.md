@@ -48,6 +48,7 @@
 - [x] [Strongly Connected Component](code/graph/strongly_connected_component.h)
 - [x] [Topological Sort](code/graph/topological_sort.h)
 - [x] [Tree ID](code/graph/tree_id.h)
+- [x] [Vertex Cover In Tree](code/graph/vertex_cover_in_tree.h)
 
 **Dynamic Programming**
 - [x] [Divide and Conquer Optimization](code/dynamic_programming/dc_optimization.tex)
