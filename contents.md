@@ -66,12 +66,16 @@
 - [x] [Extended Euclidean](code/math/extended_euclidean.h)
 - [x] [Fraction](code/math/fraction.h)
 - [x] [FFT](code/math/fft.h)
+- [x] [Floyd Cycle Finding](code/math/floyd_cycle_finding.h)
+- [x] [Function Root Using Newton](code/math/function_root_using_newton.h)
 - [x] [Gray Code](code/math/gray_code.h)
 - [x] [Matrix](code/math/matrix.h)
 - [x] [Modular Arithmetic](code/math/modular.h)
+- [x] [Modular Integer](code/math/modular_int.h)
 - [x] [Montgomery Multiplication](code/math/montgomery.h)
 - [x] [NTT](code/math/ntt.h)
 - [x] [Prime Number](code/math/prime.h)
+- [x] [Simpson Integration](code/math/simpson_integration.h)
 
 **Geometry**
 - [x] [Basic Geometry](code/geometry/basic_geometry.h)
