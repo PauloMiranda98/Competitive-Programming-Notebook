@@ -65,10 +65,12 @@
 - [x] [Euler's totient](code/math/eulers_totient.h)
 - [x] [Extended Euclidean](code/math/extended_euclidean.h)
 - [x] [Fraction](code/math/fraction.h)
+- [x] [FFT](code/math/fft.h)
 - [x] [Gray Code](code/math/gray_code.h)
 - [x] [Matrix](code/math/matrix.h)
 - [x] [Modular Arithmetic](code/math/modular.h)
 - [x] [Montgomery Multiplication](code/math/montgomery.h)
+- [x] [NTT](code/math/ntt.h)
 - [x] [Prime Number](code/math/prime.h)
 
 **Geometry**
