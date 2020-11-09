@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef pair<int, int> pii;
-// Return the pattern of vector: pair<cycle start, cycle size>
+// Return the pattern of vector in O(N): pair<cycle start, cycle size>
 pii identifyPattern(vector<int> v){
   int n = v.size();
   reverse(v.begin(), v.end());
