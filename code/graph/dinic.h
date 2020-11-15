@@ -5,9 +5,11 @@ using namespace std;
 template <typename flow_t>
 struct Dinic{
   struct FlowEdge{
-    int from, to;
+    int from, to, id;
     flow_t cap, flow = 0;
-    FlowEdge(int f, int t, flow_t c) : from(f), to(t), cap(c) {}
+    FlowEdge(int f, int t, flow_t c, int id1) : from(f), to(t), cap(c){
+      id = id1;
+    }
   };
   const flow_t flow_inf = numeric_limits<flow_t>::max();
   vector<FlowEdge> edges;
@@ -58,10 +60,10 @@ struct Dinic{
     level.resize(n);
     ptr.resize(n);
   }
-  void addEdge(int from, int to, flow_t cap){
+  void addEdge(int from, int to, flow_t cap, int id=0){
     assert(n>0);
-    edges.push_back(FlowEdge(from, to, cap));
-    edges.push_back(FlowEdge(to, from, 0));
+    edges.emplace_back(from, to, cap, id);
+    edges.emplace_back(to, from, 0, -id);
     adj[from].push_back(m);
     adj[to].push_back(m + 1);
     m += 2;
@@ -85,32 +87,29 @@ struct Dinic{
     return f;
   }
 };
-typedef pair<int, int> pii;
-vector<pii> recoverCut(Dinic<int> &d){
-  vector<int> level(d.n, 0);
-  vector<pii> rc;
+// Returns the minimum cut edge IDs 
+vector<int> recoverCut(Dinic<int> &d){
+  vector<int> seen(d.n, 0);
   queue<int> q;
   q.push(d.s);
-  level[d.s] = 1;
+  seen[d.s] = 1;
   while (!q.empty()){
-    int u = q.front();
+    int u = q.front(); 
     q.pop();
-    for (int id : d.adj[u]){
-      if ((id & 1) == 1)
+    for (int idx : d.adj[u]){
+      if (d.edges[idx].cap == d.edges[idx].flow)
         continue;
-      if (d.edges[id].cap == d.edges[id].flow){
-        rc.push_back(pii(d.edges[id].from, d.edges[id].to));
-      }else{
-        if (level[d.edges[id].to] == 0){
-          q.push(d.edges[id].to);
-          level[d.edges[id].to] = 1;
-        }
+      if (!seen[d.edges[idx].to]){
+        q.push(d.edges[idx].to);
+        seen[d.edges[idx].to] = 1;
       }
     }
   }
-  vector<pii> ans;
-  for (pii p : rc)
-    if ((level[p.first] == 0) or (level[p.second] == 0))
-      ans.push_back(p);
+  vector<int> ans;
+  for(auto e: d.edges){
+    if((e.cap == e.flow) and (seen[e.from] != seen[e.to]) and e.id >= 0)
+      ans.push_back(e.id);
+  }
   return ans;
 }
+
