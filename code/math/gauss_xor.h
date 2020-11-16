@@ -23,7 +23,7 @@ struct GaussXOR {
   }
   void add(int x) {
     for(int i = MAXB-1; i >= 0; i--) {
-      if( (table[i] == 0) and (x & (1LL<<i)) ){
+      if((table[i] == 0) and ((x>>i) & 1)){
         table[i] = x;
         x = 0;
       } else {

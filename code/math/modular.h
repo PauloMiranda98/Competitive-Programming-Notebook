@@ -16,6 +16,7 @@ inline int modMul(int a, int b, int mod = MOD){
 	return (a*1LL*b)%mod;
 }
 int inv(int a, int mod=MOD){
+	assert(a > 0);
 	ll inv_x, y;
 	extGcd(a, mod, inv_x, y);
 	return (inv_x%mod + mod)%mod;		
