@@ -89,27 +89,28 @@ struct Dinic{
 };
 // Returns the minimum cut edge IDs 
 vector<int> recoverCut(Dinic<int> &d){
-  vector<int> seen(d.n, 0);
+  vector<bool> seen(d.n, false);
   queue<int> q;
   q.push(d.s);
-  seen[d.s] = 1;
+  seen[d.s] = true;
   while (!q.empty()){
     int u = q.front(); 
     q.pop();
     for (int idx : d.adj[u]){
-      if (d.edges[idx].cap == d.edges[idx].flow)
+      auto e = d.edges[idx];
+      if (e.cap == e.flow)
         continue;
-      if (!seen[d.edges[idx].to]){
-        q.push(d.edges[idx].to);
-        seen[d.edges[idx].to] = 1;
+      if (!seen[e.to]){
+        q.push(e.to);
+        seen[e.to] = true;
       }
     }
   }
   vector<int> ans;
   for(auto e: d.edges){
-    if((e.cap == e.flow) and (seen[e.from] != seen[e.to]) and e.id >= 0)
-      ans.push_back(e.id);
+    if(e.cap > 0 and (e.cap == e.flow) and (seen[e.from] != seen[e.to])){
+      if(e.id >= 0) ans.push_back(e.id);
+    }
   }
   return ans;
 }
-
