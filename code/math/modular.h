@@ -4,7 +4,7 @@ using namespace std;
 const int MOD = 1000000007;
 inline int modSum(int a, int b, int mod = MOD){
 	int ans = a+b;
-	if(ans > mod) ans -= mod;
+	if(ans >= mod) ans -= mod;
 	return ans;
 }
 inline int modSub(int a, int b, int mod = MOD){
