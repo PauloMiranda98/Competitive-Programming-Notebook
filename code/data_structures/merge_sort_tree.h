@@ -25,7 +25,7 @@ public:
     st.assign(n << 1, neutral);
     for (int i = 0; i < sz; i++, begin++)
       st[i + n].assign(1, *begin);
-    for (int i = n - 1; i > 1; i--){
+    for (int i = n - 1; i; i--){
       int l = (i << 1); 
       join(st[l], st[l+1], st[i]);
     }
