@@ -39,6 +39,7 @@
 - [x] [Dinic](code/graph/dinic.h)
 - [x] [Flow With Demand](code/graph/flow_with_demand.h)
 - [x] [Floyd Warshall](code/graph/floyd_warshall.h)
+- [x] [Hungarian](code/graph/hungarian.h)
 - [x] [Prim](code/graph/prim.h)
 - [x] [HLD](code/graph/hld.h)
 - [x] [Kruskal](code/graph/kruskal.h)
