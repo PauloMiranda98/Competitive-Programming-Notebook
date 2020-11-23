@@ -84,10 +84,10 @@ public:
     }
     return ans;
   }
-  void addEdge(int from, int to, T cap, T cost){
-    edges[from].push_back(list.size());
+  void addEdge(int u, int to, T cap, T cost){
+    edges[u].push_back(list.size());
     list.push_back(Edge(to, cap, cost));
     edges[to].push_back(list.size());
-    list.push_back(Edge(from, 0, -cost));
+    list.push_back(Edge(u, 0, -cost));
   }
 };
