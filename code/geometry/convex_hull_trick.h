@@ -11,7 +11,7 @@ struct ConvexHullTrick{
   ConvexHullTrick(){}
   ConvexHullTrick(vector<LineCHT> v){
     sort(v.begin(), v.end(), [&](LineCHT a, LineCHT b){
-      return a.k < a.k;
+      return lt(a.k, b.k);
     });
     for(auto l: v)
       add_line(l.k, l.b);
