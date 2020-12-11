@@ -37,6 +37,7 @@
 - [x] [Checking Bipartiteness Online](code/graph/checking_bipartiteness_online.h)
 - [ ] [Dijkstra](code/graph/dijkstra.h)
 - [x] [Dinic](code/graph/dinic.h)
+- [x] [Edmond's Blossoms](code/graph/edmond_blossoms.h)
 - [x] [Flow With Demand](code/graph/flow_with_demand.h)
 - [x] [Floyd Warshall](code/graph/floyd_warshall.h)
 - [x] [Hungarian](code/graph/hungarian.h)
