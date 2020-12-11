@@ -42,6 +42,7 @@
 - [x] [Hungarian](code/graph/hungarian.h)
 - [x] [Prim](code/graph/prim.h)
 - [x] [HLD](code/graph/hld.h)
+- [x] [Kuhn](code/graph/kuhn.h)
 - [x] [Kruskal](code/graph/kruskal.h)
 - [x] [LCA](code/graph/lca.h)
 - [x] [Min-Cut](code/graph/mincut.h)
