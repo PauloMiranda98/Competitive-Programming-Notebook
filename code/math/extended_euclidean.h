@@ -22,9 +22,32 @@ bool dioEq(ll a, ll b, ll c, ll &x0, ll &y0, ll &g){
 	if (b < 0) y0 = -y0;
 	return true;
 }
-inline void shift_solution(ll &x, ll &y, ll a, ll b, ll cnt){
-	x += cnt * b;
-	y -= cnt * a;
+inline void shift(ll &x, ll &y, ll a, ll b, ll cnt){
+  x += cnt * b;
+  y -= cnt * a;
+}
+// a1 + m1*x = a2 + m2*y
+// Find the first moment that both are equal
+ll findMinimum(ll a1, ll m1, ll a2, ll m2){
+  ll a = m1, b = -m2, c = a2 - a1;
+  ll x, y, g;
+  if (!dioEq(a, b, c, x, y, g))
+    return -1;
+  a /= g;
+  b /= g;
+  int sa = a > 0 ? +1 : -1;
+  int sb = b > 0 ? +1 : -1;
+  shift(x, y, a, b, -x/b);
+  if(x < 0) 
+    shift(x, y, a, b, sb);
+  if(y < 0){
+    shift(x, y, a, b, y/a);
+    if(y < 0)
+      shift(x, y, a, b, -sa);
+    if(x < 0)
+      return -1;
+  }
+  return a*x*g;
 }
 ll findAllSolutions(ll a, ll b, ll c, ll minx, ll maxx, ll miny, ll maxy){
 	ll x, y, g;
@@ -41,25 +64,25 @@ ll findAllSolutions(ll a, ll b, ll c, ll minx, ll maxx, ll miny, ll maxy){
 	b /= g;
 	int sign_a = a > 0 ? +1 : -1;
 	int sign_b = b > 0 ? +1 : -1;
-	shift_solution(x, y, a, b, (minx - x) / b);
+	shift(x, y, a, b, (minx - x) / b);
 	if (x < minx)
-		shift_solution(x, y, a, b, sign_b);
+		shift(x, y, a, b, sign_b);
 	if (x > maxx)
 		return 0;
 	ll lx1 = x;
-	shift_solution(x, y, a, b, (maxx - x) / b);
+	shift(x, y, a, b, (maxx - x) / b);
 	if (x > maxx)
-		shift_solution(x, y, a, b, -sign_b);
+		shift(x, y, a, b, -sign_b);
 	ll rx1 = x;
-	shift_solution(x, y, a, b, -(miny - y) / a);
+	shift(x, y, a, b, -(miny - y) / a);
 	if (y < miny)
-		shift_solution(x, y, a, b, -sign_a);
+		shift(x, y, a, b, -sign_a);
 	if (y > maxy)
 		return 0;
 	ll lx2 = x;
-	shift_solution(x, y, a, b, -(maxy - y) / a);
+	shift(x, y, a, b, -(maxy - y) / a);
 	if (y > maxy)
-		shift_solution(x, y, a, b, sign_a);
+		shift(x, y, a, b, sign_a);
 	ll rx2 = x;
 	if (lx2 > rx2)
 		swap(lx2, rx2);
