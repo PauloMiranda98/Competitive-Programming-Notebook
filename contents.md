@@ -39,6 +39,7 @@
 - [ ] [Dijkstra](code/graph/dijkstra.h)
 - [x] [Dinic](code/graph/dinic.h)
 - [x] [Edmond's Blossoms](code/graph/edmond_blossoms.h)
+- [x] [Eulerian Path](code/graph/eulerian_path.h)
 - [x] [Flow With Demand](code/graph/flow_with_demand.h)
 - [x] [Floyd Warshall](code/graph/floyd_warshall.h)
 - [x] [Hungarian](code/graph/hungarian.h)
