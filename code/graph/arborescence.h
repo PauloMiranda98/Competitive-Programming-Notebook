@@ -1,94 +1,92 @@
 #include <bits/stdc++.h>
-#include "../data_structures/union_find.h"
-
-using namespace std;
-/**
- * Source: https://github.com/spaghetti-source/algorithm/blob/master/graph/arborescence.cc
- * Description: Edmonds' algorithm for finding the weight of the minimum spanning
- * tree/arborescence of a directed graph, given a root node. If no MST exists, returns -1.
- * Time: O(E \log V)
- */
-typedef long long ll;
-namespace Arborescence{
-  struct Edge { int a, b; ll w; };
-  struct Heap {
-    Edge key;
-    Heap *l, *r;
-    ll delta;
-    void prop() {
-      key.w += delta;
-      if (l) l->delta += delta;
-      if (r) r->delta += delta;
-      delta = 0;
-    }
-    Edge top() { prop(); return key; }
-  };
-  Heap *merge(Heap *a, Heap *b) {
-    if (!a || !b) return a ?: b;
-    a->prop(), b->prop();
-    if (a->key.w > b->key.w) swap(a, b);
-    swap(a->l, (a->r = merge(b, a->r)));
-    return a;
+#include "../data_structures/union_find_with_rollback.h"
+using ll = long long;
+struct Edge { int a, b; ll w; };
+struct Node { /// lazy skew heap node
+  Edge key;
+  Node *l, *r;
+  ll delta;
+  void prop() {
+    key.w += delta;
+    if (l) l->delta += delta;
+    if (r) r->delta += delta;
+    delta = 0;
   }
-  void pop(Heap*& a) { a->prop(); a = merge(a->l, a->r); }
-
-//public
-  vector<Edge> g;
-  void init(){
-    g.clear();
+  Edge top() { prop(); return key; }
+};
+Node *merge(Node *a, Node *b) {
+  if (!a || !b) return a ?: b;
+  a->prop(), b->prop();
+  if (a->key.w > b->key.w) swap(a, b);
+  swap(a->l, (a->r = merge(b, a->r)));
+  return a;
+}
+void pop(Node*& a) { a->prop(); a = merge(a->l, a->r); }
+void free(vector<Node*> &v){
+  for(auto &x: v)
+    delete x;
+}
+// O(M * log(N))
+pair<ll, vector<int>> dmst(int n, int r, vector<Edge>& g) {
+  RollbackUF uf(n);
+  vector<Node*> heap(n);
+  vector<Node*> vf;
+  for (Edge e : g){ 
+    Node* node = new Node{e};
+    vf.push_back(node);
+    heap[e.b] = merge(heap[e.b], node);
   }
-  void addEdge(int u, int to, ll w) {
-    Edge e;
-    e.a = u, e.b = to, e.w = w;
-    g.push_back(e);
-  }
-  ll dmst(int n, int root) {
-    UnionFind uf(n);
-    vector<Heap*> heap(n);
-    vector<Heap*> vp;
-    for (Edge e : g){ 
-      Heap* h = new Heap{e};
-      vp.push_back(h);
-      heap[e.b] = merge(heap[e.b], h);
-    }
-    ll res = 0;
-    vector<int> seen(n, -1), path(n);
-    seen[root] = root;
-    for(int s=0; s<n; s++) {
-      int u = s, qi = 0, w;
-      while (seen[u] < 0) {
-        path[qi++] = u, seen[u] = s;
-        if (!heap[u]){
-          for(Heap *h: vp)
-            delete h;          
-          return -1;
-        }
-        Edge e = heap[u]->top();
-        heap[u]->delta -= e.w, pop(heap[u]);
-        res += e.w; u = uf.find(e.a);
-        if (seen[u] == s) {
-          Heap* cyc = 0;
-          do cyc = merge(cyc, heap[w = path[--qi]]);
-          while (uf.join(u, w));
-          u = uf.find(u);
-          heap[u] = cyc, seen[u] = -1;
-        }
+  ll res = 0;
+  vector<int> seen(n, -1), path(n), par(n);
+  seen[r] = r;
+  vector<Edge> Q(n), in(n, {-1, -1}), comp;
+  deque<tuple<int, int, vector<Edge>>> cycs;
+  for(int s = 0; s < n; ++s) {
+    int u = s, qi = 0, w;
+    while (seen[u] < 0) {
+      if (!heap[u]){
+        free(vf);
+        return {-1,{}};
+      }
+      Edge e = heap[u]->top();
+      heap[u]->delta -= e.w, pop(heap[u]);
+      Q[qi] = e, path[qi++] = u, seen[u] = s;
+      res += e.w, u = uf.find(e.a);
+      if (seen[u] == s) { /// found cycle, contract
+        Node* cyc = 0;
+        int end = qi, time = uf.time();
+        do cyc = merge(cyc, heap[w = path[--qi]]);
+        while (uf.unite(u, w));
+        u = uf.find(u), heap[u] = cyc, seen[u] = -1;
+        cycs.push_front({u, time, {&Q[qi], &Q[end]}});
       }
     }
-    for(Heap *h: vp)
-      delete h;
-    return res;
+    for(int i = 0; i < qi; ++i) in[uf.find(Q[i].b)] = Q[i];
   }
-  //Careful with overflow
-  ll dmstAnyRoot(int n) {
-    ll maxEdge = 1000000010;    
-    ll INF = n*maxEdge;
+  for (auto& [u, t, c] : cycs) { // restore sol (optional)
+    uf.rollback(t);
+    Edge inEdge = in[u];
+    for (auto& e : c) in[uf.find(e.b)] = e;
+    in[uf.find(inEdge.b)] = inEdge;
+  }
+  for(int i = 0; i < n; ++i) par[i] = in[i].a;
+  free(vf);
+  return {res, par};
+} 
+//Careful with overflow
+pair<ll, vector<int>> dmstAnyRoot(int n, vector<Edge> v) {
+  ll maxEdge = 1000000010;
+  ll INF = n*maxEdge;
+  for(int i=0; i<n; i++)
+    v.push_back(Edge({n, i, INF}));
+  auto [ans, dad] = dmst(n+1, n, v);
+  if(ans >= 0 and ans < 2*INF){
     for(int i=0; i<n; i++)
-      addEdge(n, i, INF);
-    ll ans = dmst(n+1, n);
-    if(ans >= 0 and ans < 2*INF)
-      return ans - INF;
-    else
-      return -1;
-  }  
-};
+      if(dad[i] == n)
+        dad[i] = -1;
+    dad.pop_back();
+    return {ans - INF, dad};
+  }else{
+    return {-1, {}};
+  }
+}

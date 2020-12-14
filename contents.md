@@ -24,6 +24,7 @@
 - [x] [Stack Query](code/data_structures/stack_query.h)
 - [x] [Treap](code/data_structures/treap.h)
 - [x] [Union Find](code/data_structures/union_find.h)
+- [x] [Union Find With Rollback](code/data_structures/union_find_with_rollback.h)
 - [x] [Wavelet Tree](code/data_structures/wavelet_tree.h)
 
 **Graph Algorithms**
