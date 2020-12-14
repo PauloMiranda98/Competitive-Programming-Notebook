@@ -27,6 +27,7 @@ void free(vector<Node*> &v){
     delete x;
 }
 // O(M * log(N))
+// return {sum of weights, vector with parents}
 pair<ll, vector<int>> dmst(int n, int r, vector<Edge>& g) {
   RollbackUF uf(n);
   vector<Node*> heap(n);
