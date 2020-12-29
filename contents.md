@@ -104,6 +104,7 @@
 - [x] [KMP](code/strings/kmp.h)
 - [x] [Manacher](code/strings/manacher.h)
 - [x] [Min Cyclic String](code/strings/min_cyclic_string.h)
+- [x] [Palindromic Tree](code/strings/eertree.h)
 - [x] [String Hashing](code/strings/hashing.h)
 - [x] [Suffix Automaton](code/strings/suffix_automaton.h)
 - [x] [Suffix Array](code/strings/suffix_array.h)
