@@ -138,7 +138,7 @@ ftLong distance_point_to_segment(Point2d a, Point2d ps1, Point2d ps2) {
   if(ps1 == ps2)
     return dist(ps1, a);
   Point2d d = ps2 - ps1;
-  ftLong t = max(ftLong(0), min(ftLong(1), dot(a-ps1, d)/len(d)));
+  ftLong t = max(ftLong(0), min(ftLong(1), ftLong(dot(a-ps1, d)/len(d))));
   Point2d proj = ps1 + Point2d(d.x*t, d.y*t);
   return dist(a, proj);
 }
