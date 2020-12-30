@@ -26,8 +26,8 @@ template<bool directed=false> struct EulerianPath{
     }
     ans.push_back(u);
   }
-  // Lembrar de chamar para o src certo
-  // Se for verificar se existe resposta lembre de analisar se toda componente > 1 do grafo está conectada
+  // Remember to call the correct src
+  // If you want to check if there is an answer remember to check if all |components| > 1 of the graph are connected
   vector<int> getPath(int src){
     pos.assign(n, 0);
     used.assign(m, false);
