@@ -68,12 +68,13 @@ struct Dinic{
     adj[to].push_back(m + 1);
     m += 2;
   }
+  void resetFlow(){
+    for(int i=0; i<m; i++)
+      edges[i].flow = 0;
+  }
   flow_t maxFlow(int s1, int t1){
     s = s1, t = t1;
     flow_t f = 0;
-    //Reset Flow
-    for(int i=0; i<m; i++)
-      edges[i].flow = 0;
     while (true){
       level.assign(n, -1);
       level[s] = 0;
@@ -111,6 +112,31 @@ vector<int> recoverCut(Dinic<int> &d){
     if(e.cap > 0 and (e.cap == e.flow) and (seen[e.from] != seen[e.to])){
       if(e.id >= 0) ans.push_back(e.id);
     }
+  }
+  return ans;
+}
+typedef long long ll;
+typedef tuple<int, int, ll> tp; // (u, to, cap)
+#define all(x) x.begin(),x.end()
+//O(V*E*log(MAXC))
+ll maxFlowWithScaling(int n, vector<tp> edges, int s, int t){
+  Dinic<ll> graph;
+  graph.init(n);
+  sort(all(edges), [&](tp a, tp b){
+    return get<2>(a) < get<2>(b);
+  });
+  ll ans = 0;
+  for(int l=(1<<30); l > 0; l >>= 1){
+    while(!edges.empty()){
+      auto [u, to, cap] = edges.back();
+      if(cap >= l){
+        graph.addEdge(u, to, cap);
+        edges.pop_back();
+      }else{
+        break;
+      }
+    }
+    ans += graph.maxFlow(s, t);
   }
   return ans;
 }
