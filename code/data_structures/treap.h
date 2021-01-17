@@ -66,8 +66,9 @@ namespace Treap{
     op_val[0] = neutral;
     //init Treap
     root = 0;
+    std::mt19937 rng((int) std::chrono::steady_clock::now().time_since_epoch().count());
     for(int i = en = 1; i <= n; i++) { Y[i] = i; sz[i] = 1; L[i] = R[i] = 0; }
-    random_shuffle(Y + 1, Y + n + 1);
+    shuffle(Y + 1, Y + n + 1, rng);
   }
   void insert(treap_t x){
     int a, b;
