@@ -90,6 +90,7 @@
 - [x] [Rank Matrix](code/math/rank_matrix.h)
 - [x] [Simpson Integration](code/math/simpson_integration.h)
 - [x] [Sieve And Primes](code/math/sieve_and_primes.h)
+- [x] [Xor-And-Or Convolution](code/math/xor_and_or_convolution.h)
 
 **Geometry**
 - [x] [Basic Geometry](code/geometry/basic_geometry.h)
