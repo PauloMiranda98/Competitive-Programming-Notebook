@@ -74,7 +74,7 @@ public:
   }
   pair<T, T> solve(int src, int sink){
     pair<T, T> ans(0, 0);
-    // Remove negative edges: Johnson’s Algorithm
+    // Remove negative edges: Johnson's Algorithm
     if (!SPFA(src, sink))
       return ans;
     fixPot();
