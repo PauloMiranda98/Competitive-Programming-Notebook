@@ -4,6 +4,7 @@
 - [x] [BIT](code/data_structures/bit.h)
 - [x] [BIT 2D](code/data_structures/bit2d.h)
 - [x] [BIT In Range](code/data_structures/bit_range.h)
+- [x] [Custom Hash](code/data_structures/custom_hash.h)
 - [x] [Dynamic Median](code/data_structures/dynamic_median.h) 
 - [ ] [Dynamic Wavelet Tree](code/data_structures/dynamic_wavelet_tree.h)
 - [x] [Implicit Treap](code/data_structures/implicit_treap.h)
@@ -118,12 +119,14 @@
 - [x] [Z Function](code/strings/z_function.h)
 
 **Miscellaneous**
+- [x] [Automaton](code/miscellaneous/automaton.h)
 - [x] [Counting Inversions](code/miscellaneous/counting_inversions.h)
 - [x] [Histogram](code/miscellaneous/histogram.h)
 - [x] [Identify Pattern](code/miscellaneous/identify_pattern.h)
 - [x] [Kadane 1D and 2D](code/miscellaneous/kadane.h)
 - [x] [Longest Increasing Subsequence](code/miscellaneous/lis.h)
 - [x] [Mo Algorithm](code/miscellaneous/mo_algorithm.h)
+- [x] [Mo With Update](code/miscellaneous/mo_with_update.h)
 - [x] [Polyominoes](code/miscellaneous/polyominoes.h)
 - [x] [Scheduling Jobs](code/miscellaneous/scheduling_jobs.h)
 - [x] [Sprague Grundy](code/miscellaneous/sprague_grundy.h)

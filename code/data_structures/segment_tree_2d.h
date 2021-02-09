@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+//Procurar uma versão mais otimizada
 struct SegTree2D{
 private:
   int n, m;

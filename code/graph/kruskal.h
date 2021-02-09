@@ -3,7 +3,7 @@ typedef long long ll;
 struct Edge{
   int u, v; ll w;	
   Edge(){}
-  Edge(int u, int v, ll w):u(u), v(v), w(w){}
+  Edge(int u1, int v1, ll w1):u(u1), v(v1), w(w1){}
 };
 ll kruskal(vector<Edge> v, int nVet){
   ll cost = 0;
