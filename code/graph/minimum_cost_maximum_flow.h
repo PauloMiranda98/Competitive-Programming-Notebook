@@ -1,5 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
+//O(MaxFlow * path) or
+//O(N * M * Path) = O(N^2*M^2) or O(N*M^2*log(n)) or O(N^3*M)
+//                    SPFA          Dijkstra        Dijkstra
 template <class T = int>
 class MCMF{
 private:
@@ -71,7 +74,7 @@ public:
   }
   pair<T, T> solve(int src, int sink){
     pair<T, T> ans(0, 0);
-    // Can use dijkstra to speed up depending on the graph
+    // Remove negative edges: Johnson’s Algorithm
     if (!SPFA(src, sink))
       return ans;
     fixPot();

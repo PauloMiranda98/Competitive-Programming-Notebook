@@ -3,7 +3,7 @@
 using namespace std;
 using pii = pair<int, int>;
 const int INF = 0x3f3f3f3f;
-const int BLOCK_SIZE = 2800; // (2*N)^(2/3)
+const int BLOCK_SIZE = 2800; // (2*N^2)^(1/3)
 const int MAXN = 100010;
 int v[MAXN];
 void remove(int x);
