@@ -1,22 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
+const int MAXN = 200010;
+const int MAXL = 20;
 namespace LCA{
-  typedef long long lca_t;
+  typedef int lca_t;
   typedef pair<int, lca_t> lca_p;
   const lca_t neutral = 0;
-  vector<vector<lca_p>> adj;
-  vector<int> level;
-  vector<vector<lca_t>> D;
-  vector<vector<int>> P;
-  int n, mxLogN;
-  void init(int _n, int _mxLogN = 20){
-    n = _n;
-    mxLogN = _mxLogN;
-    adj.assign(n, vector<lca_p>());
-    D.resize(n, vector<lca_t>(mxLogN));
-    level.resize(n);
+  vector<lca_p> adj[MAXN];
+  int level[MAXN], P[MAXN][MAXL];
+  lca_t D[MAXN][MAXL];
+  int n;
+  void init(int n1){
+    n = n1;
+    for(int i=0; i<n; i++)
+      adj[i].clear();
   }
-  lca_t join(lca_t a, lca_t b){
+  inline lca_t join(lca_t a, lca_t b){
     return a + b;
   }
   void addEdge(int a, int b, lca_t w = 1){
@@ -36,12 +35,11 @@ namespace LCA{
     }
   }
   void build(int root = 0){
-    P.assign(n, vector<int>(mxLogN, -1));
     level[root] = 0;
     P[root][0] = root;
     D[root][0] = neutral;
     dfs(root);
-    for (int j = 1; j < mxLogN; j++)
+    for (int j = 1; j < MAXL; j++)
       for (int i = 0; i < n; i++){
         P[i][j] = P[P[i][j - 1]][j - 1];
         D[i][j] = join(D[P[i][j - 1]][j - 1], D[i][j - 1]);
@@ -52,7 +50,7 @@ namespace LCA{
       swap(u, v);
     int d = level[v] - level[u];
     lca_t ans = neutral;
-    for (int i = 0; i < mxLogN; i++){
+    for (int i = 0; i < MAXL; i++){
       if (d & (1 << i)){
         ans = join(ans, D[v][i]);
         v = P[v][i];
@@ -60,7 +58,7 @@ namespace LCA{
     }
     if (u == v)
       return lca_p(u, ans);
-    for (int i = mxLogN - 1; i >= 0; i--){
+    for (int i = MAXL - 1; i >= 0; i--){
       while (P[u][i] != P[v][i]){
         ans = join(ans, D[v][i]);
         ans = join(ans, D[u][i]);
