@@ -17,15 +17,17 @@ template<typename T> struct RMQ{
     for (int j = 1; (1<<j) <= n/b; j++) for (int i = 0; i+(1<<j) <= n/b; i++)
       t[n/b*j+i] = op(t[n/b*(j-1)+i], t[n/b*(j-1)+i+(1<<(j-1))]);
   }
-  T query(int l, int r) {
-    if (r-l+1 <= b) return v[small(r, r-l+1)];
+  int getPos(int l, int r){
+    if (r-l+1 <= b) return small(r, r-l+1);
     int ans = op(small(l+b-1), small(r));
     int x = l/b+1, y = r/b-1;
     if (x <= y) {
       int j = msb(y-x+1);
       ans = op(ans, op(t[n/b*j+x], t[n/b*j+y-(1<<j)+1]));
     }
-    return v[ans];
-//    return ans; // for get position
+    return ans;
+  }
+  T queryMin(int l, int r) {
+    return v[getPos(l, r)];
   }
 };

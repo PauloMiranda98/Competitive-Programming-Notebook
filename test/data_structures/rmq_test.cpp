@@ -28,7 +28,7 @@ void testQuery(){
   RMQ<int> rmq(v);
   for (int i = 0; i < MAXN; i++){
     for (int j = i; j < MAXN; j++){
-      assert(rmq.query(i, j) == rangeMin(i, j));
+      assert(rmq.queryMin(i, j) == rangeMin(i, j));
     }
   }
 }
