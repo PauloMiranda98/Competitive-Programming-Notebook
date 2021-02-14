@@ -10,10 +10,10 @@ void testVertice(){
   hld.addEdge(1, 3);
   hld.addEdge(1, 4);
 
+  vector<long long> v(n);
   for(int i=0; i<n; i++)
-    hld.val[i] = i;
-
-  hld.build(0, false);
+    v[i] = i;
+  hld.buildToVertex(v, 0);
   //LCA
   assert(hld.lca(3, 5) == 0);
   assert(hld.lca(3, 4) == 1);
@@ -49,7 +49,7 @@ void testEdge(){
   hld.addEdge(1, 3, 3);
   hld.addEdge(1, 4, 4);
 
-  hld.build(0, true);
+  hld.buildToEdge(0);
   //LCA
   assert(hld.lca(3, 5) == 0);
   assert(hld.lca(3, 4) == 1);
