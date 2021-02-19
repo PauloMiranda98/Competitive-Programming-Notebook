@@ -156,6 +156,11 @@ long double area(vector<Point2d> p){
     ret += cross(p[i] - p[0], p[i - 1] - p[0]) / 2.0;
   return abs(ret);
 }
+long long latticePointsInSeg(Point2d a, Point2d b){
+  long long dx = abs(a.x - b.x);
+  long long dy = abs(a.y - b.y);
+  return gcd(dx, dy) + 1;
+}
 ftLong signed_area_parallelogram(Point2d p1, Point2d p2, Point2d p3){
   return cross(p2 - p1, p3 - p2);
 }
