@@ -1,4 +1,4 @@
-#include "../../code/geometry/concave_polygon.h"
+#include "../../code/geometry/general_polygon.h"
 
 void test1(){
   vector<Point2d> v;
@@ -7,7 +7,7 @@ void test1(){
   v.emplace_back(10, 10);
   v.emplace_back(10, 0);
   for(int i=0; i<2; i++){
-    ConcavePolygon pol(v);
+    GeneralPolygon pol(v);
     assert(pol.pointInPolygon(Point2d(5, 5)) == INSIDE);
     assert(pol.pointInPolygon(Point2d(0, 0)) == BOUNDARY);
     assert(pol.pointInPolygon(Point2d(0, 5)) == BOUNDARY);
@@ -29,7 +29,7 @@ void test2(){
   v.emplace_back(0, 10);
   
   for(int i=0; i<2; i++){
-    ConcavePolygon pol(v);
+    GeneralPolygon pol(v);
     assert(pol.pointInPolygon(Point2d(0, 0)) == BOUNDARY);
     assert(pol.pointInPolygon(Point2d(10, 0)) == OUTSIDE);
     assert(pol.pointInPolygon(Point2d(10, 5)) == BOUNDARY);
@@ -42,6 +42,7 @@ void test2(){
 void test3(){
   assert(true); // AC: https://vjudge.net/problem/UVA-634
   assert(true); // AC: https://open.kattis.com/problems/pointinpolygon
+  assert(true); // AC: https://cses.fi/problemset/task/2192/
 }
 int main() {
   test1();

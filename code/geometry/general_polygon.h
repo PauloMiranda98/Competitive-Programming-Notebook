@@ -1,8 +1,8 @@
 #include "basic_geometry.h"
 const int INSIDE=-1, BOUNDARY=0, OUTSIDE=1;
-struct ConcavePolygon{
+struct GeneralPolygon{
   vector<Point2d> vp;  
-  ConcavePolygon(vector<Point2d> aux){
+  GeneralPolygon(vector<Point2d> aux){
     vp = aux;
   }
   // -1 inside, 0 boundary, 1 outside
