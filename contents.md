@@ -102,7 +102,7 @@
 - [x] [Convex Hull](code/geometry/convex_hull.h)
 - [x] [Convex Hull Trick](code/geometry/convex_hull_trick.h)
 - [x] [Convex Polygon](code/geometry/convex_polygon.h)
-- [x] [Genera Polygon](code/geometry/general_polygon.h)
+- [x] [General Polygon](code/geometry/general_polygon.h)
 - [x] [Nearest Pair Of Points](code/geometry/nearest_pair_of_points.h)
 - [x] [Point 3D](code/geometry/point3d.h)
 
