@@ -16,15 +16,22 @@ template<bool directed=false> struct EulerianPath{
     if (!directed) adj[b].push_back({a, at});
   }
   void dfs(int u){
-    while(pos[u] < adj[u].size()){
-      auto [to, id] = adj[u][pos[u]];
-      pos[u]++;
-      if(!used[id]){
-        used[id] = true;
-        dfs(to);
+    stack<int> st;
+    st.push(u);
+    while(!st.empty()){
+      u = st.top();
+      if(pos[u] < adj[u].size()){
+        auto [to, id] = adj[u][pos[u]];
+        pos[u]++;
+        if(!used[id]){
+          used[id] = true;
+          st.push(to);
+        }
+      }else{
+        ans.push_back(u);
+        st.pop();
       }
     }
-    ans.push_back(u);
   }
   // Remember to call the correct src
   // If you want to check if there is an answer remember to check if all |components| > 1 of the graph are connected
