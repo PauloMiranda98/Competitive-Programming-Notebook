@@ -3,14 +3,12 @@
 using namespace std;
 
 const int MAXN = 500010;
-typedef pair<int, int> pii;
 //Articulation Point
 namespace AP{
   vector<int> adj[MAXN];
   vector<bool> visited, isAP;
   vector<int> tin, low;
   int timer, n;
-  vector<pii> bridges;
   void init(int n1){
     n = n1;
     for(int i=0; i<n; i++) adj[i].clear();

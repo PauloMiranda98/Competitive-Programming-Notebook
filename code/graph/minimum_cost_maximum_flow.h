@@ -81,6 +81,9 @@ public:
     // Can use dijkstra to speed up depending on the graph
     while (SPFA(src, sink)){
       auto flow = augment(src, sink);
+      // When the priority is the minimum cost and not the flow 
+      // if(flow.second >= 0)
+      //   break;
       ans.first += flow.first;
       ans.second += flow.first * flow.second;
       fixPot();
