@@ -46,7 +46,7 @@ private:
 		int r = l + 1;
 		return join(query(l, i, m, a, b), query(r, m + 1, j, a, b));
 	}
-	void update(int node, int i, int j, int a, int b, int value){
+	void update(int node, int i, int j, int a, int b, Node value){
 		upLazy(node, i, j);
 		if ((i > j) or (i > b) or (j < a))
 			return;
@@ -76,7 +76,7 @@ public:
 		return query(1, 0, n - 1, a, b);
 	}
 	//0-indexed [a, b]
-	void update(int a, int b, int value){
+	void update(int a, int b, Node value){
 		update(1, 0, n - 1, a, b, value);
 	}
 };
