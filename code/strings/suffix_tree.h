@@ -93,4 +93,15 @@ bool match(string &s, int i=0, int no=0, int iEdge=0){
     return match(s, i+1, no, iEdge+1);
   return false;
 }
+typedef tuple<int, int, int> tp;
+// O(n), substring <i, l, r> = s[i..l], s[i..l+1], ..., s[i..r]
+void getDistinctSubstrings(vector<tp> &v, int no=0, int d=0){
+  d += t[no].len() - t[no].adj.empty();
+  int l = t[no].l, r = t[no].r - t[no].adj.empty();
+  if(l <= r){
+    v.emplace_back(r - d + 1, l, r);
+  }
+  for(auto [x, to]: t[no].adj)
+    getDistinctSubstrings(v, to, d);
+}
 };
