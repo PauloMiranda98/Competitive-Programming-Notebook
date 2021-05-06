@@ -73,3 +73,14 @@ vector<int> lcp_construction(string const& s, vector<int> const& suf) {
   }
   return lcp;
 }
+// (ss[i] = k) --> {s[i..k], s[i..k+1], ..., s[i..n-1]}
+vector<int> getDistinctSubstrings(string &s){
+  int n = s.size();
+  auto suf = sa_construction(s);
+  auto lcp = lcp_construction(s, suf);
+  vector<int> ss(n);
+  ss[suf[0]] = suf[0] + 0;
+  for(int i=1; i<n; i++)
+    ss[suf[i]] = suf[i] + lcp[i-1];
+  return ss;
+}
