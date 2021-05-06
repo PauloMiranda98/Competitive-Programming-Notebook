@@ -1,20 +1,21 @@
 #include <bits/stdc++.h>
+#define all(x) x.begin(),x.end()
 using namespace std;
 typedef pair<int, int> pii;
-vector<int> sort_cyclic_shifts(string const& s) {
-  int n = s.size();
-  const int alphabet = 256;
-  vector<int> p(n), c(n), cnt(max(alphabet, n), 0);
+vector<int> sort_cyclic_shifts(vector<int> &v) {
+  int n = v.size();
+  const int alphabet = n+1;
+  vector<int> p(n), c(n), cnt(alphabet, 0);
   for(int i = 0; i < n; i++) 
-    cnt[s[i]]++;
+    cnt[v[i]]++;
   for(int i = 1; i < alphabet; i++)
     cnt[i] += cnt[i-1];
   for(int i = 0; i < n; i++)
-    p[--cnt[s[i]]] = i;
+    p[--cnt[v[i]]] = i;
   c[p[0]] = 0;
   int classes = 1;
   for(int i = 1; i < n; i++) {
-    if(s[p[i]] != s[p[i-1]])
+    if(v[p[i]] != v[p[i-1]])
       classes++;
     c[p[i]] = classes - 1;
   }
@@ -47,15 +48,19 @@ vector<int> sort_cyclic_shifts(string const& s) {
   return p;
 }
 // O(N*log(N))
-vector<int> sa_construction(string s) {
-  s += "$";
-  vector<int> sorted_shifts = sort_cyclic_shifts(s);
-  sorted_shifts.erase(sorted_shifts.begin());
-  return sorted_shifts;
+vector<int> sa_construction(vector<int> v) {
+  auto aux = v;
+  sort(all(aux));
+  for(int &x: v)
+    x = (lower_bound(all(aux), x) - aux.begin()) + 1;
+  v.push_back(0);
+  vector<int> suffix = sort_cyclic_shifts(v);
+  suffix.erase(suffix.begin());
+  return suffix;
 }
 // Kasai's algorithm: O(N)
-vector<int> lcp_construction(string const& s, vector<int> const& suf) {
-  int n = s.size();
+vector<int> lcp_construction(vector<int> const& v, vector<int> const& suf) {
+  int n = v.size();
   vector<int> rank(n, 0);
   for(int i = 0; i < n; i++)
     rank[suf[i]] = i;
@@ -66,7 +71,7 @@ vector<int> lcp_construction(string const& s, vector<int> const& suf) {
       k = 0; continue;
     }
     int j = suf[rank[i] + 1];
-    while (i + k < n && j + k < n && s[i+k] == s[j+k])
+    while (i + k < n && j + k < n && v[i+k] == v[j+k])
       k++;
     lcp[rank[i]] = k;
     if (k) k--;
@@ -74,10 +79,10 @@ vector<int> lcp_construction(string const& s, vector<int> const& suf) {
   return lcp;
 }
 // (ss[i] = k) --> {s[i..k], s[i..k+1], ..., s[i..n-1]}
-vector<int> getDistinctSubstrings(string &s){
-  int n = s.size();
-  auto suf = sa_construction(s);
-  auto lcp = lcp_construction(s, suf);
+vector<int> getDistinctSubstrings(vector<int> &v){
+  int n = v.size();
+  auto suf = sa_construction(v);
+  auto lcp = lcp_construction(v, suf);
   vector<int> ss(n);
   ss[suf[0]] = suf[0] + 0;
   for(int i=1; i<n; i++)
