@@ -31,6 +31,11 @@ void test2(){
   for (pii p : diff)
     assert(comp[p.first] != comp[p.second]);
 }
+
+void test3(){
+  assert(true); // AC: https://cses.fi/problemset/task/1682/
+}
+
 int main(){
   test1();
   test2();
