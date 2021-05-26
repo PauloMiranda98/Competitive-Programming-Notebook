@@ -5,6 +5,7 @@
 - [x] [BIT 2D](code/data_structures/bit2d.h)
 - [x] [BIT In Range](code/data_structures/bit_range.h)
 - [x] [Custom Hash](code/data_structures/custom_hash.h)
+- [x] [Distinct Values In Range](code/data_structures/distinct_values_in_range.h)
 - [x] [Dynamic Median](code/data_structures/dynamic_median.h) 
 - [ ] [Dynamic Wavelet Tree](code/data_structures/dynamic_wavelet_tree.h)
 - [x] [Implicit Treap](code/data_structures/implicit_treap.h)
@@ -28,6 +29,7 @@
 - [x] [Treap](code/data_structures/treap.h)
 - [x] [Union Find](code/data_structures/union_find.h)
 - [x] [Union Find With Rollback](code/data_structures/union_find_with_rollback.h)
+- [x] [Union Find Persistent](code/data_structures/union_find_persistent.h)
 - [x] [Wavelet Tree](code/data_structures/wavelet_tree.h)
 
 **Graph Algorithms**
@@ -43,8 +45,10 @@
 - [x] [Dinic](code/graph/dinic.h)
 - [x] [Edmond's Blossoms](code/graph/edmond_blossoms.h)
 - [x] [Eulerian Path](code/graph/eulerian_path.h)
+- [x] [Find Cycle Negative](code/graph/find_cycle_negative.h)
 - [x] [Flow With Demand](code/graph/flow_with_demand.h)
 - [x] [Floyd Warshall](code/graph/floyd_warshall.h)
+- [x] [Graph Theorem](code/graph/graph_theorem.h)
 - [x] [Hungarian](code/graph/hungarian.h)
 - [x] [Prim](code/graph/prim.h)
 - [x] [HLD](code/graph/hld.h)
