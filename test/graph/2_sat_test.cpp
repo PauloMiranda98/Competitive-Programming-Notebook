@@ -18,6 +18,9 @@ void test(){
   ans &= (vans[B] | vans[C]);
   assert(ans);
 }
+void test2(){
+  assert(true); // AC: https://cses.fi/problemset/task/1684/
+}
 int main(){
   test();
   return 0;

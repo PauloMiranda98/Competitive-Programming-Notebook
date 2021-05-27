@@ -11,9 +11,13 @@ void test1(){
   for(int i=0; i<n; i++)
     sum += mat[i][ans.first[i]];
   assert(sum == 16);
+}
+void test2(){
   assert(true); //AC: https://codeforces.com/group/Ohoz9kAFjS/contest/266572/problem/H
+  assert(true); //AC: https://cses.fi/problemset/task/2129/
 }
 int main() {
   test1();
+  test2();
   return 0;
 }

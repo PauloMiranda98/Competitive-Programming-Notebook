@@ -35,6 +35,7 @@ void test2(){
 void test3(){
   assert(true); // AC: https://cses.fi/problemset/task/1682/
   assert(true); // AC: https://cses.fi/problemset/task/1683/
+  assert(true); // AC: https://cses.fi/problemset/task/1686/
 }
 
 int main(){

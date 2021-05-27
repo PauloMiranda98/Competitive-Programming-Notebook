@@ -20,7 +20,11 @@ void test1(){
   assert(ans.first == 4);
   assert(ans.second == 17);
 }
+void test2(){
+  assert(true); // AC: https://cses.fi/problemset/task/2121/ 
+}
 int main(){
   test1();
+  test2();
   return 0;
 }
