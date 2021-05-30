@@ -133,6 +133,7 @@
 - [x] [Mo Algorithm](code/miscellaneous/mo_algorithm.h)
 - [x] [Mo With Update](code/miscellaneous/mo_with_update.h)
 - [x] [Pragma](code/miscellaneous/pragma.h)
+- [x] [Random Function](code/miscellaneous/random_function.h)
 - [x] [Polyominoes](code/miscellaneous/polyominoes.h)
 - [x] [Scheduling Jobs](code/miscellaneous/scheduling_jobs.h)
 - [x] [Sprague Grundy](code/miscellaneous/sprague_grundy.h)
