@@ -74,6 +74,7 @@
 **Math**
 - [x] [Basic Math](code/math/basic_math.h)
 - [x] [BigInt](code/math/bigint.h)
+- [x] [Catalan](code/math/catalan.h)
 - [x] [Binomial Coefficients](code/math/binomial_coefficients.h)
 - [x] [Chinese Remainder Theorem](code/math/chinese_remainder_theorem.h)
 - [x] [Determinant](code/math/determinant.h)
