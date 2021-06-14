@@ -1,7 +1,7 @@
 #include "../../code/data_structures/policy_based_tree.h"
 
 void orderedSetTest(){
-  OrderedSet st;
+  ordered_set<int> st;
   st.insert(4);
   st.insert(1);
   st.insert(3);
@@ -15,7 +15,7 @@ void orderedSetTest(){
 }
 
 void orderedMapTest(){
-  OrderedMap mp;
+  ordered_map<int, int> mp;
   mp[4] = 1;
   mp[1] = -2;
   mp[3] = 0;
