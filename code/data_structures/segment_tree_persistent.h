@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int MAX = 3e4 + 10, UPD = 2e5 + 10, LOG = 20;
-const int MAXS = 4 * MAX + UPD * LOG;
 namespace PerSegTree{
+  const int MAX = 2e5 + 10, UPD = 2e5 + 10, LOG = 20;
+  const int MAXS = 4 * MAX + UPD * LOG;
   typedef long long pst_t;
   pst_t seg[MAXS];
   int T[UPD], L[MAXS], R[MAXS], cnt, t;
@@ -20,7 +20,7 @@ namespace PerSegTree{
   }
   pst_t query(int a, int b, int p, int l, int r){
     if (b < l or r < a)
-      return 0;
+      return neutral;
     if (a <= l and r <= b)
       return seg[p];
     int m = (l + r) / 2;
