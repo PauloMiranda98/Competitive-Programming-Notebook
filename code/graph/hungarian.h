@@ -25,7 +25,7 @@ pair<vector<int>, int> solve(const vector<vector<int>> &matrix){
     int k0 = 0;
     do{
       used[k0] = 1;
-      int i0 = p[k0], delta = INF, k1;
+      int i0 = p[k0], delta = INF, k1 = 0;
       for (int j = 1; j <= m; j++){
         if (!used[j]){
           int cur = matrix[i0 - 1][j - 1] - u[i0] - v[j];
