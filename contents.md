@@ -69,6 +69,7 @@
 - [x] [Vertex Cover In Tree](code/graph/vertex_cover_in_tree.h)
 
 **Dynamic Programming**
+- [x] [Alien Trick](code/dynamic_programming/alien_trick.h)
 - [x] [Divide and Conquer Optimization](code/dynamic_programming/dc_optimization.tex)
 - [x] [Divide and Conquer Optimization Implementation](code/dynamic_programming/dc_optimization.h)
 - [x] [Knuth Optimization](code/dynamic_programming/knuth_optimization.tex)
