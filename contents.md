@@ -13,6 +13,7 @@
 - [x] [LiChao Tree](code/data_structures/lichao_tree.h)
 - [x] [Line Container](code/data_structures/line_container.h)
 - [x] [MergeSort Tree](code/data_structures/merge_sort_tree.h)
+- [x] [Permutation](code/data_structures/permutation.h)
 - [x] [Policy Based Tree](code/data_structures/policy_based_tree.h)
 - [x] [Queue Query](code/data_structures/queue_query.h)
 - [x] [Randomized Heap](code/data_structures/randomized_heap.h)
