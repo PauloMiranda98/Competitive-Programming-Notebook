@@ -92,6 +92,7 @@
 - [x] [Gauss](code/math/gauss.h)
 - [x] [Gauss Xor](code/math/gauss_xor.h)
 - [x] [Gray Code](code/math/gray_code.h)
+- [x] [Lagrange Interpolation](code/math/lagrange.h)
 - [x] [Matrix](code/math/matrix.h)
 - [x] [Modular Arithmetic](code/math/modular.h)
 - [x] [Modular Integer](code/math/modular_int.h)
