@@ -3,6 +3,7 @@
 **Data Structures**
 - [x] [BIT](code/data_structures/bit.h)
 - [x] [BIT 2D](code/data_structures/bit2d.h)
+- [x] [BIT Sparse](code/data_structures/bit2d_sparse.h)
 - [x] [BIT In Range](code/data_structures/bit_range.h)
 - [x] [Custom Hash](code/data_structures/custom_hash.h)
 - [x] [Distinct Values In Range](code/data_structures/distinct_values_in_range.h)
