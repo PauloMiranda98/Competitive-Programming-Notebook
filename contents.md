@@ -65,6 +65,7 @@
 - [x] [Minimum Cost Maximum Flow](code/graph/minimum_cost_maximum_flow.h)
 - [x] [Strongly Connected Component](code/graph/strongly_connected_component.h)
 - [x] [Topological Sort](code/graph/topological_sort.h)
+- [x] [Tree](code/graph/tree.h)
 - [x] [Tree ID](code/graph/tree_id.h)
 - [x] [Vertex Cover In Tree](code/graph/vertex_cover_in_tree.h)
 
