@@ -114,6 +114,7 @@
 - [x] [General Polygon](code/geometry/general_polygon.h)
 - [x] [Nearest Pair Of Points](code/geometry/nearest_pair_of_points.h)
 - [x] [Point 3D](code/geometry/point3d.h)
+- [x] [Triangle](code/geometry/triangle.h)
 
 **String Algorithms**
 - [x] [Aho Corasick](code/strings/aho_corasick.h)
