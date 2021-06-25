@@ -2,6 +2,7 @@
 #define all(x) x.begin(),x.end()
 using namespace std;
 using ll = long long;
+using pii = pair<int, int>;
 namespace GraphTheorem{
   // return if a sequence of integers d can be represented as the 
   // degree sequence of a finite simple graph on n vertices
@@ -22,4 +23,29 @@ namespace GraphTheorem{
     }
     return sum1%2 == 0;
   }
+  vector<pii> recoverErdosGallai(vector<int> d){
+    int n = d.size();
+    priority_queue<pii> pq;
+    for(int i=0; i<n; i++)
+      pq.emplace(d[i], i);
+    vector<pii> edges;
+    while(!pq.empty()){
+      auto [g, u] = pq.top();
+      pq.pop();
+      vector<pii> aux(g);
+      for(int i=0; i<g; i++){
+        if(pq.empty())
+          return {};
+        auto [g2, u2] = pq.top();
+        pq.pop();
+        if(g2 == 0)
+          return {};
+        edges.emplace_back(u, u2);
+        aux[i] = pii(g2-1, u2);
+      }
+      for(auto [g2, u2]: aux)
+        pq.emplace(g2, u2);
+    }
+    return edges;
+  }  
 };
