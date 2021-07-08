@@ -148,6 +148,7 @@
 - [x] [Polyominoes](code/miscellaneous/polyominoes.h)
 - [x] [Scheduling Jobs](code/miscellaneous/scheduling_jobs.h)
 - [x] [Sprague Grundy](code/miscellaneous/sprague_grundy.h)
+- [x] [Simplex](code/miscellaneous/simplex.h)
 
 **Theorems and Formulas**
 - [x] [Binomial Coefficients](code/theorems_and_formulas/binomial_coefficients.tex)

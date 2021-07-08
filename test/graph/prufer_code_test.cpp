@@ -1,4 +1,4 @@
-#include "../../code/graph/pruefer_code.h"
+#include "../../code/graph/prufer_code.h"
 void test(){
   assert(true); // AC: https://cses.fi/problemset/task/1134/
 }
