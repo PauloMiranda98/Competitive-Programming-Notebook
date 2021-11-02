@@ -19,12 +19,9 @@ pii find_set(int v) {
   return parent[v];
 }
 void add_edge(int a, int b) {
-  pii pa = find_set(a);
-  a = pa.first;
-  int x = pa.second;
-  pair<int, int> pb = find_set(b);
-  b = pb.first;
-  int y = pb.second;
+  int x, y;
+  tie(a, x) = find_set(a);
+  tie(b, y) = find_set(b);
   if (a == b) {
     if (x == y)
       bipartite[a] = false;
