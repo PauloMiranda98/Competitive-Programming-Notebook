@@ -6,19 +6,19 @@ using namespace std;
   typedef double ftype;
   typedef long double ftLong;
   const double EPS = 1e-9;
-  #define eq(a, b) (abs(a - b) < EPS)
-  #define lt(a, b) ((a + EPS) < b)
-  #define gt(a, b) (a > (b + EPS))
-  #define le(a, b) (a < (b + EPS))
-  #define ge(a, b) ((a + EPS) > b)
+  #define eq(a, b) (abs((a) - (b)) < EPS)
+  #define lt(a, b) (((a) + EPS) < (b))
+  #define gt(a, b) ((a) > ((b) + EPS))
+  #define le(a, b) ((a) < ((b) + EPS))
+  #define ge(a, b) (((a) + EPS) > (b))
 #else
   typedef int32_t ftype;
   typedef int64_t ftLong;
-  #define eq(a, b) (a == b)
-  #define lt(a, b) (a < b)
-  #define gt(a, b) (a > b)
-  #define le(a, b) (a <= b)
-  #define ge(a, b) (a >= b)
+  #define eq(a, b) ((a) == (b))
+  #define lt(a, b) ((a) < (b))
+  #define gt(a, b) ((a) > (b))
+  #define le(a, b) ((a) <= (b))
+  #define ge(a, b) ((a) >= (b))
 #endif
 //Begin Point 2D
 struct Point2d{
