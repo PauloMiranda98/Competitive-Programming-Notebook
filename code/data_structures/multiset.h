@@ -26,6 +26,9 @@ public:
   int min(){
     return mp.begin()->first;
   }
+  int max(){
+    return mp.rbegin()->first;
+  }
   int size(){
     return sz;
   }
