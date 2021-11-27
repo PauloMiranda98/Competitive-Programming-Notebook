@@ -136,6 +136,7 @@
 
 **Miscellaneous**
 - [x] [Automaton](code/miscellaneous/automaton.h)
+- [x] [Change STL](code/miscellaneous/change_stl.h)
 - [x] [Counting Inversions](code/miscellaneous/counting_inversions.h)
 - [x] [Fast IO](code/miscellaneous/fastio.h)
 - [x] [Histogram](code/miscellaneous/histogram.h)

@@ -7,6 +7,8 @@ void test1(){
   
   assert(true); // AC: https://leetcode.com/problems/largest-rectangle-in-histogram/
   assert(true); // AC: https://cses.fi/problemset/task/1142/
+
+  assert(true); // AC: https://cses.fi/problemset/task/1147/
 }
 int main() {
   test1();

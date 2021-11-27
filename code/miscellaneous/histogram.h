@@ -17,3 +17,23 @@ ll histogram(vector<int> v){
   }
   return ans;
 }
+
+// Largest Rectangular Area formed only by 1
+int maxArea1(vector<vector<bool>> mat){
+  int n = mat.size();
+  if(n == 0)
+    return 0;
+  int m = mat[0].size();
+  vector<int> v(m, 0);
+  int ans = 0;
+  for(int i=0; i<n; i++){
+    for(int j=0; j<m; j++){
+      if(mat[i][j])
+        v[j]++;
+      else
+        v[j] = 0;
+    }
+    ans = max(ans, (int)histogram(v));
+  }
+  return ans;
+}

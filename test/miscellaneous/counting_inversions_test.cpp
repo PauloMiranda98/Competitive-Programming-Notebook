@@ -17,6 +17,7 @@ void test1(){
 void test2(){ 
   assert(true); // AC: https://www.spoj.com/submit/INVCNT/
   assert(true); // AC: https://neps.academy/problem/63
+  assert(true); // AC: https://cses.fi/problemset/task/1162/
 }
 int main() {
   test1();

@@ -17,10 +17,12 @@ void test(){
     v[i] = rand() % 100000;
   vector<int> ans = lis(v);
   assert((int)ans.size() == brute(0, -0x3f3f3f3f));
+
 }
 int main(){
   for(int i=0; i<10; i++)
     test();
   
+  assert(true); // AC: https://cses.fi/problemset/task/1162/
   return 0;
 }
