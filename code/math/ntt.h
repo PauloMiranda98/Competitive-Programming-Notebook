@@ -134,4 +134,18 @@ namespace ntt {
     a.resize(need);
     return a;
   }
+  vector<int> pow(vector<int> a, ll exp, int maxSize){
+    vector<int> ans(1, 1);
+    ans.resize(maxSize, 0);
+    a.resize(maxSize, 0);
+    while(exp > 0){
+      if(exp & 1LL)
+        ans = multiply(ans, a);
+      a = square(a);
+      exp >>= 1;
+      ans.resize(maxSize, 0);
+      a.resize(maxSize, 0);
+    }
+    return ans;
+  }
 };
