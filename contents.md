@@ -97,6 +97,7 @@
 - [x] [Gray Code](code/math/gray_code.h)
 - [x] [Lagrange Interpolation](code/math/lagrange.h)
 - [x] [Lagrange Poly](code/math/lagrange_poly.h)
+- [x] [Linear Sequence](code/math/linear_sequence.h)
 - [x] [Matrix](code/math/matrix.h)
 - [x] [Modular Arithmetic](code/math/modular.h)
 - [x] [Modular Integer](code/math/modular_int.h)
