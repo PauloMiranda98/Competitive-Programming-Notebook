@@ -68,6 +68,7 @@ namespace LinearSeq{
     return (su%MOD+MOD)%MOD;
   }
   // Public: 
+  // O(MAXN + N^2 * log(K))
   inline int findElementInPositionN(vector<int> x, ll n){
     if(n<int(x.size())) return x[n];
     vector<int> v=BM(x); m=v.size(); if(!m) return 0;

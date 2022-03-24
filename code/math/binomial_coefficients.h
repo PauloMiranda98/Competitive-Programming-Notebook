@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#include "./basic_math.h"
 #include "./modular.h"
 using namespace std;
 typedef long long ll;
