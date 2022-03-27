@@ -35,6 +35,7 @@
 - [x] [Union Find With Rollback](code/data_structures/union_find_with_rollback.h)
 - [x] [Union Find Persistent](code/data_structures/union_find_persistent.h)
 - [x] [Wavelet Tree](code/data_structures/wavelet_tree.h)
+- [x] [Xor Trie](code/data_structures/xor_trie.h)
 
 **Graph Algorithms**
 - [x] [2-SAT](code/graph/2_sat.h)
@@ -45,7 +46,7 @@
 - [x] [Centroid](code/graph/centroid.h)
 - [x] [Centroid Decomposition](code/graph/centroid_decomposition.h)
 - [x] [Checking Bipartiteness Online](code/graph/checking_bipartiteness_online.h)
-- [ ] [Dijkstra](code/graph/dijkstra.h)
+- [x] [Dijkstra](code/graph/dijkstra.h)
 - [x] [Dinic](code/graph/dinic.h)
 - [x] [Edmond's Blossoms](code/graph/edmond_blossoms.h)
 - [x] [Eulerian Path](code/graph/eulerian_path.h)

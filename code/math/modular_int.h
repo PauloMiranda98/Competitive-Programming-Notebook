@@ -64,3 +64,6 @@ struct modInt{
     return result;
   }
 };
+modInt operator*(const modInt &a, const modInt &b) {
+  return ((uint64_t) a.val * b.val) % MOD;
+}
