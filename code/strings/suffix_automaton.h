@@ -52,6 +52,18 @@ struct SuffixAutomaton{
     }
     last = cur;
   }
+  // Dado o estado v e o tamanho l do match atual, retorna o proximo estado
+  // e o tamanho do match apos ler o caractere c
+  void nxt(int &v, int &l, char c){
+    while (v and !st[v].next.count(c)){
+      v = st[v].link;
+      l = st[v].len;
+    }
+    if (st[v].next.count(c)){
+      v = st[v].next[c];
+      l++;
+    }
+  }
   string lcs(string s){
     int v = 0, l = 0, best = 0, bestpos = 0;
     for (int i = 0; i < (int)s.size(); i++){

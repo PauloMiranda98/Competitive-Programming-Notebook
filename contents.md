@@ -96,6 +96,7 @@
 - [x] [Gauss](code/math/gauss.h)
 - [x] [Gauss Xor](code/math/gauss_xor.h)
 - [x] [Gray Code](code/math/gray_code.h)
+- [x] [Karatsuba](code/math/karatsuba.h)
 - [x] [Lagrange Interpolation](code/math/lagrange.h)
 - [x] [Lagrange Poly](code/math/lagrange_poly.h)
 - [x] [Linear Sequence](code/math/linear_sequence.h)
