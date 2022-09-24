@@ -11,6 +11,6 @@ mt19937_64 rng_64((int) std::chrono::steady_clock::now().time_since_epoch().coun
 inline int64_t rand(int64_t l, int64_t r){
   return uniform_int_distribution<int64_t>(l, r)(rng_64);
 }
-void randomShuffle(vector<int> v){
+void randomShuffle(vector<int> &v){
   shuffle(v.begin(), v.end(), rng);
 }
