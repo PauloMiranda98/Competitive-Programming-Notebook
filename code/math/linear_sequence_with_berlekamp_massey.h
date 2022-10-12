@@ -3,6 +3,7 @@ using namespace std;
 //Source: https://codeforces.com/blog/entry/61306
 typedef long long ll;
 const int MOD = 104857601;
+// Work only to prime MOD
 namespace LinearSeq{
   const int MAXN = 233333;
   ll fastPow(ll a,ll b){
