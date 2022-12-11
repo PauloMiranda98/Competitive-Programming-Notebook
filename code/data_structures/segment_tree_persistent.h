@@ -26,7 +26,7 @@ namespace PerSegTree{
     int m = (l + r) / 2;
     return join(query(a, b, L[p], l, m), query(a, b, R[p], m + 1, r));
   }
-  pst_t update(int a, int x, int lp, int p, int l, int r){
+  pst_t update(int a, pst_t x, int lp, int p, int l, int r){
     if (l == r)
       return seg[p] = x;
     int m = (l + r) / 2;
@@ -47,7 +47,7 @@ namespace PerSegTree{
   }
   //O(log(n))
   //update: v[idx] = x;
-  int update(int idx, int x, int tt = t){
+  int update(int idx, pst_t x, int tt = t){
     update(idx, x, T[tt], T[++t] = cnt++, 0, n - 1);
     return t;
   }
