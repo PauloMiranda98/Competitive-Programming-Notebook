@@ -40,4 +40,16 @@ struct SAT{
   void addDiff(int a, int b){
     addEqual(a, ~b);
   }
+  
+  // Using maxterms
+  void addTruthTable(int a, int b, bool v00, bool v01, bool v10, bool v11){
+    if(!v00)
+      addOr(a, b);
+    if(!v01)
+      addOr(a, ~b);
+    if(!v10)
+      addOr(~a, b);
+    if(!v11)
+      addOr(~a, ~b);
+  }
 };
