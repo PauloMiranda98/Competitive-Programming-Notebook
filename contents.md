@@ -14,6 +14,7 @@
 - [x] [Line Container](code/data_structures/line_container.h)
 - [x] [MergeSort Tree](code/data_structures/merge_sort_tree.h)
 - [x] [MultiSet](code/data_structures/multiset.h)
+- [x] [Multiset Hash](code/data_structures/multiset_hash.h)
 - [x] [Permutation](code/data_structures/permutation.h)
 - [x] [Policy Based Tree](code/data_structures/policy_based_tree.h)
 - [x] [Query Tree](code/data_structures/query_tree.h)
