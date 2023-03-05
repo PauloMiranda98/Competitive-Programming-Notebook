@@ -68,4 +68,16 @@ namespace Kuhn{
         ans.push_back(i);
     return ans;
   }
+
+  vector<vector<int>> minimumNumberChains(){
+    matching();
+    vector<vector<int>> chains;
+    for(int i=0; i<na; i++) if(mb[i] == -1){
+      vector<int> path;
+      for(int x=i; x != -1; x=ma[x])
+        path.push_back(x);
+      chains.push_back(path);
+    }
+    return chains;
+  }
 };
