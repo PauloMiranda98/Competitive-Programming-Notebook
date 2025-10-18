@@ -19,6 +19,7 @@ struct Trie{
     lazy = 0;
   }
   void add(ll x) {
+    x ^= lazy;
     int v = 0;
     trie[v].count++;
     for(int i=MAXB; i>=0; i--){
